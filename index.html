@@ -126,7 +126,7 @@
         }
 
         /* About Section */
-        /* About Section */
+       /* About Section */
         .about-content {
             max-width: 1000px;
             margin: 0 auto;
@@ -134,15 +134,13 @@
             line-height: 1.8;
             color: #555;
             display: flex;
-            flex-wrap: wrap; /* allow wrapping */
+            gap: 1.5rem;
             align-items: flex-start;
-            gap: 1rem;
         }
         
         /* Image styling */
         .about-image {
-            flex: 0 0 200px; /* desktop width */
-            margin-bottom: 1rem;
+            flex: 0 0 200px; /* fixed desktop width */
         }
         
         .about-image img {
@@ -160,7 +158,7 @@
         
         /* Text styling */
         .about-text {
-            flex: 1 1 0; /* text takes remaining space */
+            flex: 1;
             text-align: justify;
         }
         
@@ -168,33 +166,24 @@
             margin-bottom: 1.5rem;
         }
         
-        /* Tablet / small screens: shrink image */
+        /* Mobile / small screens: stack image on top of text */
         @media (max-width: 768px) {
-            .about-image {
-                flex: 0 0 35%; /* image 35% of width */
-            }
-        
-            .about-text {
-                flex: 1 1 60%; /* text 60% */
-            }
-        }
-        
-        /* Very small phones: stack image above text */
-        @media (max-width: 400px) {
             .about-content {
                 flex-direction: column;
                 align-items: center;
             }
         
             .about-image {
-                flex: 0 0 80%;
-                margin-bottom: 1rem;
+                width: 80%;
+                margin-bottom: 1.5rem;
             }
         
             .about-text {
-                flex: 1 1 100%;
+                width: 100%;
+                text-align: left;
             }
         }
+
 
 
         /* Services/Skills */
