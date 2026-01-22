@@ -662,17 +662,20 @@ Proficient in a wide range of IT disciplines including database management, netw
             console.log('Response status:', response.status);
             
             if (response.ok) {
-                formMessage.className = 'form-message success';
-                formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-                formMessage.style.display = 'block';
+                // Clear the form first
                 this.reset();
+                
+                // Show success message
+                formMessage.className = 'form-message success';
+                formMessage.textContent = '✓ Message sent successfully! Thank you for reaching out. I will get back to you soon.';
+                formMessage.style.display = 'block';
             } else {
                 throw new Error('Form submission failed');
             }
         } catch (error) {
             console.error('Form error:', error);
             formMessage.className = 'form-message error';
-            formMessage.textContent = 'Oops! There was a problem sending your message. Please try again.';
+            formMessage.textContent = '✗ Oops! There was a problem sending your message. Please try again.';
             formMessage.style.display = 'block';
         } finally {
             // Always re-enable button
@@ -685,7 +688,6 @@ Proficient in a wide range of IT disciplines including database management, netw
             formMessage.style.display = 'none';
         }, 5000);
     });
-        
     </script>
 </body>
 </html>
