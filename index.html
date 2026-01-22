@@ -126,25 +126,28 @@
         }
 
         /* About Section */
-     
+        /* About Section */
         .about-content {
             max-width: 1000px;
             margin: 0 auto;
             font-size: 1.1rem;
             line-height: 1.8;
             color: #555;
+            display: flex;
+            flex-wrap: wrap; /* allow wrapping */
+            align-items: flex-start;
+            gap: 1rem;
         }
         
-        /* Desktop: image floats left, text wraps */
+        /* Image styling */
         .about-image {
-            float: left;
-            width: auto; /* let image size control width */
-            margin: 0 0.5rem 1.5rem 0;
+            flex: 0 0 200px; /* desktop width */
+            margin-bottom: 1rem;
         }
         
         .about-image img {
-            width: 200px;
-            height: 250px;
+            width: 100%;
+            height: auto;
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.15);
@@ -155,7 +158,9 @@
             transform: scale(1.05);
         }
         
+        /* Text styling */
         .about-text {
+            flex: 1 1 0; /* text takes remaining space */
             text-align: justify;
         }
         
@@ -163,37 +168,14 @@
             margin-bottom: 1.5rem;
         }
         
-        /* Clear float */
-        .about-content::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-        
-        /* Tablet / small screens: flex side by side */
+        /* Tablet / small screens: shrink image */
         @media (max-width: 768px) {
-            .about-content {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                gap: 1rem;
-                flex-wrap: wrap;
-            }
-        
             .about-image {
-                float: none;
-                margin: 0;
-                flex: 0 0 40%; /* image takes 40% of width */
-            }
-        
-            .about-image img {
-                width: 100%;
-                height: auto;
+                flex: 0 0 35%; /* image 35% of width */
             }
         
             .about-text {
-                flex: 1; /* take remaining space */
-                text-align: left;
+                flex: 1 1 60%; /* text 60% */
             }
         }
         
@@ -205,14 +187,12 @@
             }
         
             .about-image {
-                flex: 0 0 auto;
-                width: 80%; /* scale image down */
+                flex: 0 0 80%;
                 margin-bottom: 1rem;
             }
         
             .about-text {
-                width: 100%;
-                text-align: left;
+                flex: 1 1 100%;
             }
         }
 
