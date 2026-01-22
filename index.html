@@ -138,10 +138,21 @@
           margin: 0 0.5rem 1.5rem 0;
         }
         
-        /* Mobile override */
+      /* Mobile override */
         @media (max-width: 768px) {
+          .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+          }
+        
+          .about-image {
+            float: none;
+            margin: 0;
+          }
+        
           .about-image img {
-            width: 20vw;   /* scales with screen */
+            width: 20vw;
             height: auto;
           }
         }
