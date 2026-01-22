@@ -132,35 +132,33 @@
             color: #555;
         }
 
-        .about-image {
-            float: left;
-            width: 200px;
-            height: auto;
-            margin: 0 0.5rem 1.5rem 0;
+       .about-image {
+          float: left;
+          width: auto; /* wrapper does not need fixed width */
+          margin: 0 0.5rem 1.5rem 0;
         }
-        /* Base style for desktop/tablet */
-
-
+        
         /* Mobile override */
         @media (max-width: 768px) {
-          .about-image {
-            width: 20vw;   /* 20% of viewport width */
+          .about-image img {
+            width: 20vw;   /* scales with screen */
             height: auto;
           }
         }
-
+        
         .about-image img {
-            width: 200px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
+          width: 200px;
+          height: 250px;
+          object-fit: cover;
+          border-radius: 15px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+          transition: transform 0.3s;
+        }
+        
+        .about-image img:hover {
+          transform: scale(1.05);
         }
 
-        .about-image img:hover {
-            transform: scale(1.02);
-        }
 
         .about-text {
             text-align: justify;
