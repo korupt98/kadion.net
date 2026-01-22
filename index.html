@@ -638,34 +638,7 @@ Proficient in a wide range of IT disciplines including database management, netw
             moveSlide(1);
         }, 5000);
 
-        // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formMessage = document.getElementById('formMessage');
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Simulate form submission
-            formMessage.className = 'form-message success';
-            formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-            formMessage.style.display = 'block';
-            
-            // Reset form
-            this.reset();
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                formMessage.style.display = 'none';
-            }, 5000);
-            
-            // In a real application, you would send this data to a server
-            console.log('Form submitted:', formData);
-        });
+        
     </script>
 </body>
 </html>
