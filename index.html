@@ -126,78 +126,68 @@
         }
 
         /* About Section */
-       /* Desktop — float image so text wraps */
+       /* About Section - Desktop */
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
         .about-image {
-          float: left;
-          margin: 0 1.5rem 1rem 0;
+            float: left;          /* float left on desktop */
+            width: auto;           /* let image keep its natural width */
+            margin: 0 1rem 1.5rem 0; /* spacing to the right and below */
         }
         
         .about-image img {
-          width: 200px;
-          height: 250px;
-          object-fit: cover;
-          border-radius: 15px;
-          box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-          transition: transform 0.3s;
+            width: 200px;          /* desktop size */
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
         }
         
-        /* Ensure wrapped text justifies nicely */
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+        
         .about-text {
-          text-align: justify;
+            text-align: justify;
         }
         
-        /* Force good wrapping & clear float */
-        .about-content::after {
-          content: "";
-          display: block;
-          clear: both;
-        }
-        
-        /* Mobile — stack vertically */
-        @media(max-width: 768px) {
-          .about-image {
-            float: none;
-            margin: 0 0 1rem 0;
-            text-align: center;
-          }
-        
-          .about-image img {
-            width: 60%;
-            height: auto;
-          }
-        
-          .about-text {
-            text-align: left;
-          }
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
         /* Clear float after about content */
         .about-content::after {
             content: "";
             display: table;
             clear: both;
         }
-
-        /* Responsive About Section */
-        @media (max-width: 768px) {
+        
+        /* Mobile Responsive */
+        @media(max-width: 768px) {
+            .about-content {
+                display: block; /* stack image + text vertically */
+                text-align: center; /* center image */
+            }
+        
             .about-image {
-                float: none;
-                width: 100%;
-                margin: 0 0 2rem 0;
+                float: none; /* remove float */
+                margin: 0 auto 1rem auto; /* center with bottom spacing */
+                text-align: center;
             }
-
+        
             .about-image img {
-                height: 350px;
+                width: 60%; /* scale down image on mobile */
+                height: auto;
             }
-
+        
             .about-text {
-                text-align: left;
+                text-align: left; /* text readable on small screens */
             }
         }
+
 
         /* Services/Skills */
         .skills-grid {
