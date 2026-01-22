@@ -126,7 +126,7 @@
         }
 
         /* About Section */
-       /* About Section - Desktop */
+     
         .about-content {
             max-width: 1000px;
             margin: 0 auto;
@@ -135,14 +135,15 @@
             color: #555;
         }
         
+        /* Desktop: image floats left, text wraps */
         .about-image {
-            float: left;          /* float left on desktop */
-            width: auto;           /* let image keep its natural width */
-            margin: 0 1rem 1.5rem 0; /* spacing to the right and below */
+            float: left;
+            width: auto; /* let image size control width */
+            margin: 0 0.5rem 1.5rem 0;
         }
         
         .about-image img {
-            width: 200px;          /* desktop size */
+            width: 200px;
             height: 250px;
             object-fit: cover;
             border-radius: 15px;
@@ -158,33 +159,60 @@
             text-align: justify;
         }
         
-        /* Clear float after about content */
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Clear float */
         .about-content::after {
             content: "";
             display: table;
             clear: both;
         }
         
-        /* Mobile Responsive */
-        @media(max-width: 768px) {
+        /* Tablet / small screens: flex side by side */
+        @media (max-width: 768px) {
             .about-content {
-                display: block; /* stack image + text vertically */
-                text-align: center; /* center image */
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 1rem;
+                flex-wrap: wrap;
             }
         
             .about-image {
-                float: none; /* remove float */
-                margin: 0 auto 1rem auto; /* center with bottom spacing */
-                text-align: center;
+                float: none;
+                margin: 0;
+                flex: 0 0 40%; /* image takes 40% of width */
             }
         
             .about-image img {
-                width: 60%; /* scale down image on mobile */
+                width: 100%;
                 height: auto;
             }
         
             .about-text {
-                text-align: left; /* text readable on small screens */
+                flex: 1; /* take remaining space */
+                text-align: left;
+            }
+        }
+        
+        /* Very small phones: stack image above text */
+        @media (max-width: 400px) {
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .about-image {
+                flex: 0 0 auto;
+                width: 80%; /* scale image down */
+                margin-bottom: 1rem;
+            }
+        
+            .about-text {
+                width: 100%;
+                text-align: left;
             }
         }
 
