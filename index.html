@@ -126,37 +126,10 @@
         }
 
         /* About Section */
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-        }
-
-       .about-image {
+       /* Desktop — float image so text wraps */
+        .about-image {
           float: left;
-          width: auto; /* wrapper does not need fixed width */
-          margin: 0 0.5rem 1.5rem 0;
-        }
-        
-      /* Mobile override */
-        @media (max-width: 768px) {
-          .about-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-          }
-        
-          .about-image {
-            float: none;
-            margin: 0;
-          }
-        
-          .about-image img {
-            width: 20vw;
-            height: auto;
-          }
+          margin: 0 1.5rem 1rem 0;
         }
         
         .about-image img {
@@ -168,13 +141,34 @@
           transition: transform 0.3s;
         }
         
-        .about-image img:hover {
-          transform: scale(1.05);
-        }
-
-
+        /* Ensure wrapped text justifies nicely */
         .about-text {
-            text-align: justify;
+          text-align: justify;
+        }
+        
+        /* Force good wrapping & clear float */
+        .about-content::after {
+          content: "";
+          display: block;
+          clear: both;
+        }
+        
+        /* Mobile — stack vertically */
+        @media(max-width: 768px) {
+          .about-image {
+            float: none;
+            margin: 0 0 1rem 0;
+            text-align: center;
+          }
+        
+          .about-image img {
+            width: 60%;
+            height: auto;
+          }
+        
+          .about-text {
+            text-align: left;
+          }
         }
 
         .about-text p {
