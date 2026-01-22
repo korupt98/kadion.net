@@ -658,24 +658,23 @@ Proficient in a wide range of IT disciplines including database management, netw
                 }
             });
             
+            console.log('Response status:', response.status);
+            
             if (response.ok) {
                 formMessage.className = 'form-message success';
                 formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
                 formMessage.style.display = 'block';
                 this.reset();
-                
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
             } else {
                 throw new Error('Form submission failed');
             }
         } catch (error) {
+            console.error('Form error:', error);
             formMessage.className = 'form-message error';
             formMessage.textContent = 'Oops! There was a problem sending your message. Please try again.';
             formMessage.style.display = 'block';
-            
-            // Re-enable button
+        } finally {
+            // Always re-enable button
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Message';
         }
