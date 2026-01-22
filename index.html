@@ -135,7 +135,18 @@
         .about-image {
             float: left;
             width: 200px;
+            height: auto;
             margin: 0 0.5rem 1.5rem 0;
+        }
+        /* Base style for desktop/tablet */
+
+
+        /* Mobile override */
+        @media (max-width: 768px) {
+          .about-image {
+            width: 20vw;   /* 20% of viewport width */
+            height: auto;
+          }
         }
 
         .about-image img {
