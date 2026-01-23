@@ -588,8 +588,6 @@ Proficient in a wide range of IT disciplines including database management, netw
     });
     </script>
 
-
-  
 <script>
 /* ============================
    FADE SLIDER + DOTS + BUTTONS
@@ -621,6 +619,7 @@ function goToSlide(index) {
   updateSlider();
 }
 
+// Buttons
 document.querySelector("#fadeSlider .next").addEventListener("click", () => {
   goToSlide(currentIndex + 1);
 });
@@ -629,7 +628,7 @@ document.querySelector("#fadeSlider .prev").addEventListener("click", () => {
   goToSlide(currentIndex - 1);
 });
 
-// Initialize
+// Init
 updateSlider();
 
 /* ============================
@@ -639,7 +638,5 @@ document.querySelectorAll(".zoomable").forEach(img => {
   Panzoom(img, { maxScale: 4 });
 });
 </script>
-
-
 </body>
 </html>
