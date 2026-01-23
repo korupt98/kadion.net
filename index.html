@@ -10,6 +10,7 @@
 
   gtag('config', 'G-XLKTEKS2TD');
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
     <meta property="og:image" content="banner.jpg"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -175,112 +176,87 @@
 
 
 /* Image Slider */
-.slider-container {
-    width: 100%;
-    max-width: 900px;
-    margin: 2rem auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-}
-
-.slider-wrapper {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slide {
-    min-width: 100%;
-    position: relative;
-}
-
-.slide img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Caption (optional) */
-.slide-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: white;
-    padding: 2rem 1rem 1rem;
-    text-align: center;
-}
-
-/* Arrows */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.9);
-    color: #333;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.4rem;
-    transition: all 0.3s;
-    z-index: 10;
-}
-
-.slider-btn.prev { left: 12px; }
-.slider-btn.next { right: 12px; }
-
-.slider-btn:hover {
-    background: white;
-    transform: translateY(-50%) scale(1.1);
-}
-
-/* Dots */
-.slider-dots {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.5);
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.dot.active {
-    background: white;
-    width: 24px;
-    border-radius: 6px;
-}
-
-/* MOBILE OPTIMIZATION */
-@media (max-width: 768px) {
-    .slider-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 1.2rem;
-    }
-
-    .slide img {
-        max-height: 300px;
-        object-fit: cover;
-    }
-
-    .slide-caption {
-        padding: 1rem;
-    }
-}
+            /* === Fade Slider with Pinch Zoom === */
+            .slider-container {
+              position: relative;
+              width: 100%;
+              max-width: 900px;
+              margin: 2rem auto;
+              overflow: hidden;
+              border-radius: 10px;
+              box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+              height: 500px;
+            }
+            
+            .slide {
+              position: absolute;
+              inset: 0;
+              opacity: 0;
+              transition: opacity 1.2s ease-in-out;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            
+            .slide.active {
+              opacity: 1;
+            }
+            
+            .slide img {
+              max-width: 100%;
+              max-height: 100%;
+              object-fit: contain;
+              touch-action: none;
+            }
+            
+            /* Navigation arrows */
+            .slider-btn {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              background: rgba(255,255,255,0.85);
+              border: none;
+              width: 44px;
+              height: 44px;
+              border-radius: 50%;
+              cursor: pointer;
+              font-size: 1.4rem;
+              z-index: 10;
+            }
+            
+            .slider-btn.prev { left: 12px; }
+            .slider-btn.next { right: 12px; }
+            
+            /* Dots */
+            .slider-dots {
+              position: absolute;
+              bottom: 14px;
+              left: 50%;
+              transform: translateX(-50%);
+              display: flex;
+              gap: 8px;
+            }
+            
+            .dot {
+              width: 10px;
+              height: 10px;
+              background: rgba(255,255,255,0.5);
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            
+            .dot.active {
+              width: 24px;
+              border-radius: 6px;
+              background: white;
+            }
+            
+            /* Mobile support */
+            @media (max-width: 768px) {
+              .slider-container {
+                height: 300px;
+              }
+            }
 
         /* Contact Form */
         .contact-form {
@@ -428,41 +404,29 @@
     <section id="photos"> 
       <p></p>
         <!-- Image Slider -->
-        <div class="slider-container">
-            <div class="slider-wrapper" id="sliderWrapper">
-                 <div class="slide">
-                    <img src="banner.jpg?w=1200&h=600&fit=crop" alt="Consulting">
-                </div>
-                <div class="slide">
-                    <img src="family.jpg?w=1200&h=600&fit=crop" alt="Development">
-                </div>
-                  <div class="slide">
-                    <img src="SoccerBoys.jpg?w=1200&h=600&fit=crop" alt="Consulting">
-                </div>
-                <div class="slide">
-                    <img src="baseballtyler.jpg?w=1200&h=600&fit=crop" alt="Consulting">
-                </div>
-                <!--
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop" alt="Design">
-                    <div class="slide-caption">
-                        <h4>Creative Design</h4>
-                        <p>Beautiful, user-focused design that converts</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop" alt="Strategy">
-                    <div class="slide-caption">
-                        <h4>Data-Driven Strategy</h4>
-                        <p>Analytics and insights that power growth</p>
-                    </div>
-                </div>
-            </div>
-            -->
-            <button class="slider-btn prev" onclick="moveSlide(-1)">‹</button>
-            <button class="slider-btn next" onclick="moveSlide(1)">›</button>
-            <div class="slider-dots" id="sliderDots"></div>
-        </div>
+       <div class="slider-container" id="fadeSlider">
+
+  <div class="slide active">
+    <img class="zoomable" src="banner.jpg" alt="">
+  </div>
+
+  <div class="slide">
+    <img class="zoomable" src="family.jpg" alt="">
+  </div>
+
+  <div class="slide">
+    <img class="zoomable" src="SoccerBoys.jpg" alt="">
+  </div>
+
+  <div class="slide">
+    <img class="zoomable" src="baseballtyler.jpg" alt="">
+  </div>
+
+  <button class="slider-btn prev">‹</button>
+  <button class="slider-btn next">›</button>
+  <div class="slider-dots"></div>
+
+</div>
 
     </section>
 
@@ -573,64 +537,89 @@ Proficient in a wide range of IT disciplines including database management, netw
         });
 
         // Image Slider Functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-        const sliderWrapper = document.getElementById('sliderWrapper');
-        const dotsContainer = document.getElementById('sliderDots');
-
-        // Create dots
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'dot';
-            if (i === 0) dot.classList.add('active');
-            dot.onclick = () => goToSlide(i);
-            dotsContainer.appendChild(dot);
-        }
-
-        function updateSlider() {
-            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+        <script>
+            let currentIndex = 0;
+            const wrapper = document.getElementById("sliderWrapper");
+            const slides = document.querySelectorAll(".slide");
+            const dotsContainer = document.getElementById("sliderDots");
+            const totalSlides = slides.length;
             
-            // Update dots
-            document.querySelectorAll('.dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
+            // --- Create dots ---
+            slides.forEach((_, i) => {
+                const dot = document.createElement("div");
+                dot.className = "dot" + (i === 0 ? " active" : "");
+                dot.addEventListener("click", () => goToSlide(i));
+                dotsContainer.appendChild(dot);
             });
-        }
-
-        function moveSlide(direction) {
-            currentSlide += direction;
             
-            if (currentSlide < 0) {
-                currentSlide = totalSlides - 1;
-            } else if (currentSlide >= totalSlides) {
-                currentSlide = 0;
+            function updateDots() {
+                document.querySelectorAll(".dot").forEach((dot, i) => {
+                    dot.classList.toggle("active", i === currentIndex);
+                });
             }
             
-            updateSlider();
-        }
+            function goToSlide(index) {
+                currentIndex = (index + totalSlides) % totalSlides;
+                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateDots();
+            }
+            
+            function moveSlide(step) {
+                goToSlide(currentIndex + step);
+            }
+            
+            // --- CLICK ANY IMAGE TO ADVANCE ---
+            slides.forEach(slide => {
+                slide.addEventListener("click", () => moveSlide(1));
+            });
+            
+            // --- TOUCH SWIPE SUPPORT ---
+            let startX = 0;
+            let isDragging = false;
+            
+            wrapper.addEventListener("touchstart", e => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+            
+            wrapper.addEventListener("touchmove", e => {
+                if (!isDragging) return;
+                const touchX = e.touches[0].clientX;
+                const diff = startX - touchX;
+            
+                if (Math.abs(diff) > 50) {
+                    moveSlide(diff > 0 ? 1 : -1);
+                    isDragging = false;
+                }
+            });
+            
+            wrapper.addEventListener("touchend", () => {
+                isDragging = false;
+            });
+            
+            // Optional mouse swipe for desktops (not required but nice)
+            let mouseDown = false;
+            let mouseStartX = 0;
+            
+            wrapper.addEventListener("mousedown", e => {
+                mouseDown = true;
+                mouseStartX = e.clientX;
+            });
+            
+            wrapper.addEventListener("mousemove", e => {
+                if (!mouseDown) return;
+                const diff = mouseStartX - e.clientX;
+                if (Math.abs(diff) > 50) {
+                    moveSlide(diff > 0 ? 1 : -1);
+                    mouseDown = false;
+                }
+            });
+            
+            wrapper.addEventListener("mouseup", () => mouseDown = false);
+            wrapper.addEventListener("mouseleave", () => mouseDown = false);
 
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlider();
-        }
-
-        const slider = document.getElementById('sliderWrapper');
-        let startX = 0;
-        
-        slider.addEventListener('touchstart', e => {
-            startX = e.touches[0].clientX;
-        });
-        
-        slider.addEventListener('touchend', e => {
-            const endX = e.changedTouches[0].clientX;
-            if (startX - endX > 50) moveSlide(1);
-            if (endX - startX > 50) moveSlide(-1);
-        });
-
-        // Auto-advance slider every 5 seconds
-        setInterval(() => {
-            moveSlide(1);
-        }, 5000);
+            setInterval(() => moveSlide(1), 5000);
+            </script>
 
         
     // Contact form Ajax submission
