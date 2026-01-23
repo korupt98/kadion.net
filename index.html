@@ -536,91 +536,7 @@ Proficient in a wide range of IT disciplines including database management, netw
             });
         });
       
-        // Image Slider Functionality
-      
-            let currentIndex = 0;
-            const slides = document.querySelectorAll(".slide");
-            const dotsContainer = document.querySelector(".slider-dots");
-            const totalSlides = slides.length;
-            
-            // --- Create dots ---
-            slides.forEach((_, i) => {
-                const dot = document.createElement("div");
-                dot.className = "dot" + (i === 0 ? " active" : "");
-                dot.addEventListener("click", () => goToSlide(i));
-                dotsContainer.appendChild(dot);
-            });
-            
-            function updateDots() {
-                document.querySelectorAll(".dot").forEach((dot, i) => {
-                    dot.classList.toggle("active", i === currentIndex);
-                });
-            }
-            
-            function goToSlide(index) {
-                currentIndex = (index + totalSlides) % totalSlides;
-                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-                updateDots();
-            }
-            
-            function moveSlide(step) {
-                goToSlide(currentIndex + step);
-            }
-            
-            // --- CLICK ANY IMAGE TO ADVANCE ---
-            slides.forEach(slide => {
-                slide.addEventListener("click", () => moveSlide(1));
-            });
-            
-            // --- TOUCH SWIPE SUPPORT ---
-            let startX = 0;
-            let isDragging = false;
-            
-            wrapper.addEventListener("touchstart", e => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-            
-            wrapper.addEventListener("touchmove", e => {
-                if (!isDragging) return;
-                const touchX = e.touches[0].clientX;
-                const diff = startX - touchX;
-            
-                if (Math.abs(diff) > 50) {
-                    moveSlide(diff > 0 ? 1 : -1);
-                    isDragging = false;
-                }
-            });
-            
-            wrapper.addEventListener("touchend", () => {
-                isDragging = false;
-            });
-            
-            // Optional mouse swipe for desktops (not required but nice)
-            let mouseDown = false;
-            let mouseStartX = 0;
-            
-            wrapper.addEventListener("mousedown", e => {
-                mouseDown = true;
-                mouseStartX = e.clientX;
-            });
-            
-            wrapper.addEventListener("mousemove", e => {
-                if (!mouseDown) return;
-                const diff = mouseStartX - e.clientX;
-                if (Math.abs(diff) > 50) {
-                    moveSlide(diff > 0 ? 1 : -1);
-                    mouseDown = false;
-                }
-            });
-            
-            wrapper.addEventListener("mouseup", () => mouseDown = false);
-            wrapper.addEventListener("mouseleave", () => mouseDown = false);
-
-            setInterval(() => moveSlide(1), 5000);
-            
-
-        
+                
     // Contact form Ajax submission
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -671,45 +587,59 @@ Proficient in a wide range of IT disciplines including database management, netw
         }, 5000);
     });
     </script>
-<script>
-const slides = document.querySelectorAll('#fadeSlider .slide');
-const dotsContainer = document.querySelector('#fadeSlider .slider-dots');
-let index = 0;
 
-// Create dots
+
+  
+<script>
+/* ============================
+   FADE SLIDER + DOTS + BUTTONS
+   ============================ */
+let currentIndex = 0;
+const slides = document.querySelectorAll("#fadeSlider .slide");
+const dotsContainer = document.querySelector("#fadeSlider .slider-dots");
+
+// Build dots
 slides.forEach((_, i) => {
-  const dot = document.createElement('div');
-  dot.classList.add('dot');
-  if (i === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => goToSlide(i));
+  const dot = document.createElement("div");
+  dot.className = "dot" + (i === 0 ? " active" : "");
+  dot.addEventListener("click", () => goToSlide(i));
   dotsContainer.appendChild(dot);
 });
-const dots = dotsContainer.querySelectorAll('.dot');
 
-function goToSlide(i) {
-  slides[index].classList.remove('active');
-  dots[index].classList.remove('active');
-  index = (i + slides.length) % slides.length;
-  slides[index].classList.add('active');
-  dots[index].classList.add('active');
+function updateSlider() {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === currentIndex);
+  });
+
+  document.querySelectorAll("#fadeSlider .dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentIndex);
+  });
 }
 
-document.querySelector('.prev').onclick = () => goToSlide(index - 1);
-document.querySelector('.next').onclick = () => goToSlide(index + 1);
+function goToSlide(index) {
+  currentIndex = (index + slides.length) % slides.length;
+  updateSlider();
+}
 
-// Auto-play
-setInterval(() => goToSlide(index + 1), 3500);
+document.querySelector("#fadeSlider .next").addEventListener("click", () => {
+  goToSlide(currentIndex + 1);
+});
 
-// Pinch Zoom
-document.querySelectorAll('.zoomable').forEach(img => {
-  const panzoom = Panzoom(img, {
-    maxScale: 4,
-    minScale: 1,
-    contain: 'outside'
-  });
-  img.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
+document.querySelector("#fadeSlider .prev").addEventListener("click", () => {
+  goToSlide(currentIndex - 1);
+});
+
+// Initialize
+updateSlider();
+
+/* ============================
+   PINCH ZOOM (Panzoom)
+   ============================ */
+document.querySelectorAll(".zoomable").forEach(img => {
+  Panzoom(img, { maxScale: 4 });
 });
 </script>
+
 
 </body>
 </html>
