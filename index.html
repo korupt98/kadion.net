@@ -587,56 +587,84 @@ Proficient in a wide range of IT disciplines including database management, netw
         }, 5000);
     });
     </script>
+  
+//Image Slider
+    <script>
+    /* ============================
+       FADE SLIDER + DOTS + BUTTONS + AUTOPLAY
+       ============================ */
+    let currentIndex = 0;
+    const slides = document.querySelectorAll("#fadeSlider .slide");
+    const dotsContainer = document.querySelector("#fadeSlider .slider-dots");
+    const sliderElement = document.querySelector("#fadeSlider");
+    let autoplayInterval;
+    
+    // Build dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement("div");
+      dot.className = "dot" + (i === 0 ? " active" : "");
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+    
+    function updateSlider() {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === currentIndex);
+      });
+    
+      document.querySelectorAll("#fadeSlider .dot").forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+    }
+    
+    function goToSlide(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      updateSlider();
+    }
+    
+    // Buttons
+    document.querySelector("#fadeSlider .next").addEventListener("click", () => {
+      goToSlide(currentIndex + 1);
+      restartAutoplay();
+    });
+    
+    document.querySelector("#fadeSlider .prev").addEventListener("click", () => {
+      goToSlide(currentIndex - 1);
+      restartAutoplay();
+    });
+    
+    // Autoplay every 3s
+    function startAutoplay() {
+      autoplayInterval = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 3000);
+    }
+    
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+    
+    function restartAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+    
+    // Pause autoplay on hover (desktop)
+    sliderElement.addEventListener("mouseenter", stopAutoplay);
+    sliderElement.addEventListener("mouseleave", startAutoplay);
+    
+    // Init
+    updateSlider();
+    startAutoplay();
+    
+    /* ============================
+       PINCH ZOOM (Panzoom)
+       ============================ */
+    document.querySelectorAll(".zoomable").forEach(img => {
+      Panzoom(img, { maxScale: 4 });
+    });
+    </script>
 
-<script>
-/* ============================
-   FADE SLIDER + DOTS + BUTTONS
-   ============================ */
-let currentIndex = 0;
-const slides = document.querySelectorAll("#fadeSlider .slide");
-const dotsContainer = document.querySelector("#fadeSlider .slider-dots");
-
-// Build dots
-slides.forEach((_, i) => {
-  const dot = document.createElement("div");
-  dot.className = "dot" + (i === 0 ? " active" : "");
-  dot.addEventListener("click", () => goToSlide(i));
-  dotsContainer.appendChild(dot);
-});
-
-function updateSlider() {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === currentIndex);
-  });
-
-  document.querySelectorAll("#fadeSlider .dot").forEach((dot, i) => {
-    dot.classList.toggle("active", i === currentIndex);
-  });
-}
-
-function goToSlide(index) {
-  currentIndex = (index + slides.length) % slides.length;
-  updateSlider();
-}
-
-// Buttons
-document.querySelector("#fadeSlider .next").addEventListener("click", () => {
-  goToSlide(currentIndex + 1);
-});
-
-document.querySelector("#fadeSlider .prev").addEventListener("click", () => {
-  goToSlide(currentIndex - 1);
-});
-
-// Init
-updateSlider();
-
-/* ============================
-   PINCH ZOOM (Panzoom)
-   ============================ */
-document.querySelectorAll(".zoomable").forEach(img => {
-  Panzoom(img, { maxScale: 4 });
-});
-</script>
+  
 </body>
 </html>
