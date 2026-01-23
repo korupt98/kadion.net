@@ -126,65 +126,74 @@
         }
 
         /* About Section */
-       /* About Section */
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-        
-        /* Image styling */
-        .about-image {
-            flex: 0 0 200px; /* fixed desktop width */
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
-        }
-        
-        .about-image img:hover {
-            transform: scale(1.05);
-        }
-        
-        /* Text styling */
-        .about-text {
-            flex: 1;
-            text-align: justify;
-        }
-        
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Mobile / small screens: stack image on top of text */
-        @media (max-width: 768px) {
+       /* ---------- About Section Layout ---------- */
             .about-content {
-                flex-direction: column;
-                align-items: center;
+              max-width: 1000px;
+              margin: 0 auto;
+              font-size: 1.1rem;
+              line-height: 1.75;
+              color: #444;
+              overflow: hidden; /* keeps float inside container */
             }
-        
+            
+            /* Desktop image default */
             .about-image {
-                width: 80%;
-                margin-bottom: 1.5rem;
+              float: left;
+              width: 200px;
+              margin: 0 1rem 1rem 0;
             }
-        
+            
+            .about-image img {
+              width: 100%;
+              height: auto;
+              border-radius: 12px;
+              object-fit: cover;
+              box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+            }
+            
             .about-text {
-                width: 100%;
-                text-align: left;
+              text-align: justify;
             }
-        }
-
-
+            
+            /* -------- Mobile Behavior -------- */
+            @media (max-width: 768px) {
+            
+              /* shrink to 20% viewport width, still float left for wrapping */
+              .about-image {
+                width: 20vw; /* 20% of screen width */
+                margin: 0 0.8rem 0.8rem 0;
+              }
+            
+              .about-text {
+                font-size: 1rem;
+                line-height: 1.6;
+              }
+            }
+            
+            /* -------- Safety fallback for VERY tiny screens -------- */
+            @media (max-width: 380px) {
+            
+              /* if viewport too narrow, stack for readability */
+              .about-image {
+                float: none;
+                display: block;
+                width: 60vw;
+                margin: 0 auto 1rem auto;
+              }
+            
+              .about-text {
+                width: 100%;
+              }
+            }
+            
+            /* Clear floats */
+            .about-content::after {
+              content: "";
+              display: table;
+              clear: both;
+            }
+            
+            
 
         /* Services/Skills */
         .skills-grid {
@@ -479,14 +488,15 @@
     </section>
 
 
+
     <!-- About Section -->
     <section id="about">
         <h3>About Kadion</h3>
         <div class="about-content">
-            <div class="about-image">
+            <figure class="about-image">
                 <!-- REPLACE THIS URL WITH YOUR OWN PHOTO -->
                 <img src="headshot.jpg?w=200&h=253&fit=crop" alt="Kadion Profile Photo">
-            </div>
+          </figure>
             <div class="about-text">
     
             <p>Experienced, highly qualified Educational Technology leader with over 20 years of experience in K-12 with various roles in the classroom, in building, and in district administration. 
