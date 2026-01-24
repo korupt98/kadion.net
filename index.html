@@ -444,16 +444,22 @@
       
       /* Fix checkbox label from becoming block */
         .checkbox-wrapper {
-          display: inline-flex !important;
+          display: flex !important;
           align-items: center;
           gap: 8px;
           cursor: pointer;
           user-select: none;
         }
 
-        
-        .checkbox-wrapper input {
+        .checkbox-wrapper input[type="checkbox"] {
           margin: 0;
+          width: auto !important;
+          flex-shrink: 0;
+        }
+
+        .checkbox-wrapper span {
+          font-weight: 400;
+          color: #2c3e50;
         }
 
 
