@@ -603,11 +603,12 @@
         }
 
         .footer-content {
-          max-width: 1200px;
+          max-width: 800px;
           margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
+          text-align: center;
+        }
+
+        .footer-section {
           margin-bottom: 2rem;
         }
 
@@ -619,10 +620,14 @@
 
         .footer-section ul {
           list-style: none;
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          flex-wrap: wrap;
         }
 
         .footer-section ul li {
-          margin-bottom: 0.5rem;
+          margin-bottom: 0;
         }
 
         .footer-section a {
@@ -715,6 +720,11 @@
 
             .footer-content {
               grid-template-columns: 1fr;
+              text-align: center;
+            }
+
+            .footer-section ul {
+              gap: 1rem;
             }
         }
         .hero {
@@ -952,14 +962,6 @@
                     <li><a href="#platform">Platform</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul>
-                    <li>Email: <a href="mailto:kadion@kadion.org">kadion@kadion.org</a></li>
-                    <li>Sturbridge, Massachusetts</li>
                 </ul>
             </div>
 
