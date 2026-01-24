@@ -48,20 +48,46 @@
         
         .cta-strip a {
           background: white;
-          padding: 8px 16px;
+          padding: 12px 24px;
           border-radius: 6px;
           font-weight: 600;
           text-decoration: none;
           color: #053656;
           border: 2px solid white;
+          transition: all 0.3s;
         }
         
         .cta-strip a:hover {
           border-color: #EB1927;
           color: #EB1927;
+          transform: translateY(-2px);
         }
 
+        /* Sticky CTA for mobile */
+        .sticky-cta {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #EB1927;
+          color: white;
+          padding: 12px 20px;
+          border-radius: 50px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+          display: none;
+          z-index: 999;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s;
+        }
 
+        .sticky-cta:hover {
+          background: #c91520;
+          transform: scale(1.05);
+        }
+
+        .sticky-cta.visible {
+          display: block;
+        }
 
       
         /* Navigation */
@@ -319,7 +345,7 @@
         .contact-form {
           background: #f1f5f9;
           border: 2px solid #05365622;
-          padding: 2rem; /* FIX FORM SPACING */
+          padding: 2rem;
           border-radius: 8px;
           width: 100%;
           max-width: 700px;
@@ -352,7 +378,7 @@
         .form-group textarea {
         border: 2px solid #05365644;
         width: 100%;
-        padding: 10px; /* FIX TEXT ALIGN & STRETCH */
+        padding: 10px;
         border-radius: 6px;
         }    
 
@@ -360,6 +386,7 @@
         .form-group textarea:focus {
           border-color: #053656;
           box-shadow: 0 0 4px #05365655;
+          outline: none;
         }
 
         .form-group textarea {
@@ -367,14 +394,17 @@
             resize: vertical;
         }
 
-
-
-      
    
       .submit-btn {
         background: #053656;
         color: white;
         border: none;
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
         transition: background 0.3s, transform 0.3s;
       }
 
@@ -382,6 +412,12 @@
           .submit-btn:hover {
             background: #EB1927;
             transform: translateY(-2px);
+          }
+
+          .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
           }
 
 
@@ -465,7 +501,18 @@
             }
 
             .contact-form {
-                padding: 2rem;
+                padding: 1.5rem;
+            }
+
+            .cta-strip {
+              flex-direction: column;
+              gap: 0.8rem;
+              padding: 1rem 1.5rem;
+            }
+            
+            .cta-strip a {
+              width: 100%;
+              text-align: center;
             }
         }
         .hero {
@@ -473,7 +520,6 @@
           padding-bottom: 20px;
           text-align: center;
           background: none;
-           /* background: #f8f9fa;light neutral background, optional */
           color: #053656;
         }
         
@@ -493,8 +539,6 @@
 </head>
 <body>
     <!-- Navigation -->
-   
-
     <nav>
         <div class="container">
             <ul>
@@ -502,7 +546,6 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
-             
             </ul>
         </div>
     </nav>
@@ -547,6 +590,15 @@
 
     </section>
 
+    <!-- CTA Strip - positioned after slider -->
+    <section class="cta-strip">
+            <a href="#contact" onclick="setSubject('Volunteer Opportunity')">Volunteer</a>
+            <a href="#contact" onclick="setSubject('Lawn Sign Request')">Request a Lawn Sign</a>
+            <a href="#contact" onclick="setSubject('General Question')">Ask a Question</a>
+    </section>
+
+    <!-- Sticky CTA for mobile -->
+    <a href="#contact" class="sticky-cta" id="stickyCta">Get Involved →</a>
 
 
     <!-- About Section -->
@@ -560,13 +612,13 @@
           </figure>
             <div class="about-text">
     
-            <p><b>Hi, I’m Kadion Phillips.</b>
-             <p>If you’ve spent time at our local sports fields or tuned into a town committee meeting, we may have already met. 
-              I’m running for the Sturbridge Select Board for the local election on April 13, 2026, because I believe that deep roots and active service are the best foundations for leadership.</p>
+            <p><b>Hi, I'm Kadion Phillips.</b>
+             <p>If you've spent time at our local sports fields or tuned into a town committee meeting, we may have already met. 
+              I'm running for the Sturbridge Select Board for the local election on April 13, 2026, because I believe that deep roots and active service are the best foundations for leadership.</p>
 
-              <p><b>Why I’m Running</b></p>
+              <p><b>Why I'm Running</b></p>
 <p>Our town is a special place, but keeping it that way requires more than just good intentions—it requires work, transparency, and a clear vision. 
-  I’ve spent years "in the trenches" of our local government and youth programs. I’m not just asking for your vote; I’m asking for the opportunity to continue the work I’m already doing for you.
+  I've spent years "in the trenches" of our local government and youth programs. I'm not just asking for your vote; I'm asking for the opportunity to continue the work I'm already doing for you.
 
               <br><p><b>My Vision for Sturbridge</b></p>
               
@@ -580,23 +632,18 @@
               <p><b>Smart Economic Growth:</b> To keep our tax base strong, we must be a partner to our local businesses. By streamlining processes and promoting Sturbridge as a prime location for commerce, we can strengthen our tax base and create new opportunities for our residents.</p>
 
               <p><b>Experience You Can Count On</b></p>
-              <p>Leadership is about collaboration. Whether I’m serving as Vice Chair of the Community Preservation Committee, working on the Recreation and Cable Advisory Committees, or coaching Sturbridge Youth Basketball, Soccer, and Little League, my goal has always been the same: to listen, to solve problems, and to move us forward.
+              <p>Leadership is about collaboration. Whether I'm serving as Vice Chair of the Community Preservation Committee, working on the Recreation and Cable Advisory Committees, or coaching Sturbridge Youth Basketball, Soccer, and Little League, my goal has always been the same: to listen, to solve problems, and to move us forward.
               Professionally, my work with the Massachusetts Educational Technology Administrators Association has given me the tools to manage complex systems and maintain high standards of accountability. I am ready to bring that same professional rigor to the Select Board.</p>
 
               <p><b>Join Me on April 13th</b></p>
               A prosperous future for Sturbridge starts with a government that works for all of us. I would be honored to have your support and your vote.
               
-            <p><b>Let’s keep Sturbridge moving forward—together.</b></p>
+            <p><b>Let's keep Sturbridge moving forward—together.</b></p>
                      
             </div>
         </div>
     </section>
 
-    <section class="cta-strip">
-            <a href="#contact">Volunteer</a>
-              <a href="#contact">Host a Lawn Sign</a>
-              <a href="#contact">General Question</a>
-    </section>
   
 
     <!-- Experience Section -->
@@ -623,7 +670,7 @@
 <section id="contact">
     <h3>Get In Touch</h3>
 
-   <p class="contact-desc">We’d love to hear from you! Use the form below to ask questions, share feedback, or sign up for campaign updates.</p>
+   <p class="contact-desc">We'd love to hear from you! Use the form below to ask questions, share feedback, or sign up for campaign updates.</p>
     <form class="contact-form" id="contactForm" action="https://formspree.io/f/xqepaqpo" method="POST">
         <div class="form-group">
             <label for="name">Name</label>
@@ -655,12 +702,6 @@
         <div class="form-message" id="formMessage"></div> 
     </form>
 </section>
-
-
-  <form action="…" class="newsletter">
-  <input type="email" placeholder="Email for updates">
-  <button>Join</button>
-</form>
 
 
     <!-- Footer -->
@@ -699,6 +740,27 @@
             });
         });
       
+        // Pre-fill subject line from CTA buttons
+        function setSubject(subject) {
+          setTimeout(() => {
+            document.getElementById('subject').value = subject;
+          }, 500);
+        }
+
+        // Sticky CTA visibility on scroll (mobile)
+        const stickyCta = document.getElementById('stickyCta');
+        const ctaStrip = document.querySelector('.cta-strip');
+        
+        window.addEventListener('scroll', () => {
+          if (window.innerWidth <= 768) {
+            const ctaStripRect = ctaStrip.getBoundingClientRect();
+            if (ctaStripRect.bottom < 0) {
+              stickyCta.classList.add('visible');
+            } else {
+              stickyCta.classList.remove('visible');
+            }
+          }
+        });
                 
     // Contact form Ajax submission
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -722,156 +784,4 @@
             
             console.log('Response status:', response.status);
             
-            if (response.ok) {
-                // Clear the form first
-                this.reset();
-                
-                // Show success message
-                formMessage.className = 'form-message success';
-                formMessage.textContent = '✓ Message sent successfully! Thank you for reaching out. I will get back to you soon.';
-                formMessage.style.display = 'block';
-            } else {
-                throw new Error('Form submission failed');
-            }
-        } catch (error) {
-            console.error('Form error:', error);
-            formMessage.className = 'form-message error';
-            formMessage.textContent = '✗ Oops! There was a problem sending your message. Please try again.';
-            formMessage.style.display = 'block';
-        } finally {
-            // Always re-enable button
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
-        }
-        
-        // Hide message after 5 seconds
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-    });
-    </script>
-
-<script>
-/* ============================
-   FADE SLIDER + DOTS + BUTTONS + AUTOPLAY + SWIPE + DOUBLE-CLICK
-   ============================ */
-let currentIndex = 0;
-const slides = document.querySelectorAll("#fadeSlider .slide");
-const dotsContainer = document.querySelector("#fadeSlider .slider-dots");
-const sliderElement = document.querySelector("#fadeSlider");
-let autoplayInterval;
-
-// Build dots
-slides.forEach((_, i) => {
-  const dot = document.createElement("div");
-  dot.className = "dot" + (i === 0 ? " active" : "");
-  dot.addEventListener("click", () => goToSlide(i));
-  dotsContainer.appendChild(dot);
-});
-
-function updateSlider() {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === currentIndex);
-  });
-
-  document.querySelectorAll("#fadeSlider .dot").forEach((dot, i) => {
-    dot.classList.toggle("active", i === currentIndex);
-  });
-}
-
-function goToSlide(index) {
-  currentIndex = (index + slides.length) % slides.length;
-  updateSlider();
-}
-
-// Buttons
-document.querySelector("#fadeSlider .next").addEventListener("click", () => {
-  goToSlide(currentIndex + 1);
-  restartAutoplay();
-});
-
-document.querySelector("#fadeSlider .prev").addEventListener("click", () => {
-  goToSlide(currentIndex - 1);
-  restartAutoplay();
-});
-
-// Autoplay every 3s
-function startAutoplay() {
-  autoplayInterval = setInterval(() => {
-    goToSlide(currentIndex + 1);
-  }, 3000);
-}
-
-function stopAutoplay() {
-  clearInterval(autoplayInterval);
-}
-
-function restartAutoplay() {
-  stopAutoplay();
-  startAutoplay();
-}
-
-// Pause autoplay on hover (desktop)
-sliderElement.addEventListener("mouseenter", stopAutoplay);
-sliderElement.addEventListener("mouseleave", startAutoplay);
-
-// --- Swipe Support ---
-let touchStartX = 0;
-let touchEndX = 0;
-const swipeThreshold = 50;
-
-sliderElement.addEventListener('touchstart', e => {
-  touchStartX = e.changedTouches[0].screenX;
-  stopAutoplay();
-});
-
-sliderElement.addEventListener('touchend', e => {
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-  startAutoplay();
-});
-
-function handleSwipe() {
-  const diff = touchEndX - touchStartX;
-  if (Math.abs(diff) > swipeThreshold) {
-    if (diff < 0) {
-      goToSlide(currentIndex + 1); // swipe left → next
-    } else {
-      goToSlide(currentIndex - 1); // swipe right → prev
-    }
-  }
-}
-
-// --- Double-click to open full-size image ---
-slides.forEach(slide => {
-  const img = slide.querySelector("img");
-  img.addEventListener("dblclick", () => {
-    window.open(img.src, "_blank");
-  });
-});
-
-// Init
-updateSlider();
-startAutoplay();
-</script>
-<script>
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(section => {
-    const top = section.offsetTop - 120;
-    if (pageYOffset >= top) current = section.getAttribute("id");
-  });
-  navLinks.forEach(a => {
-    a.classList.toggle("active", a.getAttribute("href") === `#${current}`);
-  });
-});
-
-  
-</script>
-
-  
-</body>
-</html>
+            if (response.ok
