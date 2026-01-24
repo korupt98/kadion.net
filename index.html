@@ -286,12 +286,14 @@
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
+        /* Apply block labels ONLY for text inputs, email, textarea, etc */
+        .form-group:not(.checkbox-group) label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: #2c3e50;
         }
+
 
         .form-group input,
         .form-group textarea {
