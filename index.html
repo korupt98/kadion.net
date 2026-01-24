@@ -354,22 +354,19 @@
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
-      .checkbox-group {
+  
+      .checkbox-wrapper {
           display: flex;
           align-items: center;
-          gap: 8px; /* space between box and text */
+          gap: 8px;
+          cursor: pointer;
+          user-select: none;
         }
         
-        .checkbox-group input {
+        .checkbox-wrapper input {
           margin: 0;
         }
-        
-        .checkbox-group label {
-          margin: 0;
-           display: inline-flex;
-            align-items: center;
-            white-space: nowrap;
-        }
+
 
 
         /* Footer */
@@ -547,7 +544,7 @@
         </div>
         <div class="form-group">
             <label for="phone">Phone (optional)</label>
-            <input type="tel" id="phone" name="phone" required>
+            <input type="tel" id="phone" name="phone">
         </div>
         <div class="form-group">
             <label for="subject">Subject</label>
@@ -557,10 +554,12 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
         </div>
-       <div class="form-group checkbox-group">
-              <input type="checkbox" id="updates" name="updates" value="yes">
-              <label for="updates">I want to be contacted for updates</label>
-        </div>
+      <div class="form-group">
+        <label class="checkbox-wrapper">
+          <input type="checkbox" id="updates" name="updates" value="yes">
+          <span>I want to be contacted for updates</span>
+        </label>
+      </div>
         <button type="submit" class="submit-btn">Send Message</button>
         <div class="form-message" id="formMessage"></div> 
     </form>
