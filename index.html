@@ -468,13 +468,24 @@
                 padding: 2rem;
             }
         }
-
-      .hero {
-          padding-top: 120px;
+        .hero {
+          padding-top: 120px; /* ensures not hidden behind fixed nav */
+          padding-bottom: 40px;
           text-align: center;
-          height: 60vh;
-          color: white;
-          text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+          background: #f8f9fa; /* light neutral background, optional */
+          color: #053656;
+        }
+        
+        .hero h2 {
+          margin: 0 0 10px 0;
+          font-size: 1.8rem;
+          font-weight: 700;
+        }
+        
+        .hero p {
+          margin: 0;
+          font-size: 1rem;
+          font-weight: 400;
         }
 
     </style>
