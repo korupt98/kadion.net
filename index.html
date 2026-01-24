@@ -614,9 +614,9 @@
     });
     </script>
 
-  <script>
+<script>
 /* ============================
-   FADE SLIDER + DOTS + BUTTONS + AUTOPLAY + SWIPE
+   FADE SLIDER + DOTS + BUTTONS + AUTOPLAY + SWIPE + DOUBLE-CLICK
    ============================ */
 let currentIndex = 0;
 const slides = document.querySelectorAll("#fadeSlider .slide");
@@ -681,7 +681,7 @@ sliderElement.addEventListener("mouseleave", startAutoplay);
 // --- Swipe Support ---
 let touchStartX = 0;
 let touchEndX = 0;
-const swipeThreshold = 50; // minimum distance for swipe
+const swipeThreshold = 50;
 
 sliderElement.addEventListener('touchstart', e => {
   touchStartX = e.changedTouches[0].screenX;
@@ -705,17 +705,19 @@ function handleSwipe() {
   }
 }
 
+// --- Double-click to open full-size image ---
+slides.forEach(slide => {
+  const img = slide.querySelector("img");
+  img.addEventListener("dblclick", () => {
+    window.open(img.src, "_blank");
+  });
+});
+
 // Init
 updateSlider();
 startAutoplay();
-
-/* ============================
-   PINCH ZOOM (Panzoom)
-   ============================ */
-document.querySelectorAll(".zoomable").forEach(img => {
-  Panzoom(img, { maxScale: 4 });
-});
 </script>
+
 
   
 </body>
