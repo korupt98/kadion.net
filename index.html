@@ -319,7 +319,13 @@
         .contact-form {
           background: #f1f5f9;
           border: 2px solid #05365622;
+          padding: 2rem; /* FIX FORM SPACING */
+          border-radius: 8px;
+          width: 100%;
+          max-width: 700px;
+          margin: 0 auto;
         }
+      
         #contact .contact-desc {
               max-width: 600px;
               margin: 0 auto 20px auto;
@@ -342,10 +348,12 @@
             color: #2c3e50;
         }
 
-
       .form-group input,
         .form-group textarea {
-          border: 2px solid #05365644;
+        border: 2px solid #05365644;
+        width: 100%;
+        padding: 10px; /* FIX TEXT ALIGN & STRETCH */
+        border-radius: 6px;
         }    
 
       .form-group input:focus,
@@ -474,7 +482,9 @@
 </head>
 <body>
     <!-- Navigation -->
-   <section class="cta-strip">
+   
+  <!--
+  <section class="cta-strip">
     <nav>
         <div class="container">
             <ul>
@@ -488,7 +498,25 @@
             </ul>
         </div>
     </nav>
+
      </section>
+-->
+  <section class="cta-strip">
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact">Volunteer</a></li>
+                <li><a href="#contact">Host a Lawn Sign</a></li>
+                <li><a href="#contact">General Question</a></li>
+            </ul>
+        </div>
+    </nav>
+</section>
+  
     
   <!-- Home section -->
 <section id="home" class="hero">
