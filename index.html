@@ -352,6 +352,20 @@
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+      .checkbox-group {
+          display: flex;
+          align-items: center;
+          gap: 8px; /* space between box and text */
+        }
+        
+        .checkbox-group input {
+          margin: 0;
+        }
+        
+        .checkbox-group label {
+          margin: 0;
+        }
+
 
         /* Footer */
         footer {
@@ -541,13 +555,10 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
         </div>
-
-        <!-- New Checkbox -->
-        <div class="form-group" style="display:flex;align-items:center;gap:8px;">
-            <input type="checkbox" id="updates" name="updates" value="yes">
-            <label for="updates">I want to be contacted for updates</label>
+        <div class="form-group checkbox-group">
+              <input type="checkbox" id="updates" name="updates" value="yes">
+              <label for="updates">I want to be contacted for updates</label>
         </div>
-
         <button type="submit" class="submit-btn">Send Message</button>
         <div class="form-message" id="formMessage"></div> 
     </form>
