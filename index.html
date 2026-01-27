@@ -119,15 +119,16 @@
       
         /* Navigation */
         nav {
-            background: #053656;
+            background: linear-gradient(135deg, #053656 0%, #074a7a 100%);
             padding: 1.5rem 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(5, 54, 86, 0.4), 0 1px 3px rgba(0,0,0,0.2);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
+            border-bottom: 3px solid #EB1927;
         }
 
         nav .container {
@@ -153,21 +154,23 @@
             text-decoration: none;
             color: #ffffff;
             font-weight: 600;
-            transition: color 0.3s;
-            letter-spacing: 0.6px;
-            padding: 8px 14px;
+            letter-spacing: 0.8px;
+            padding: 10px 16px;
             border-radius: 6px;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
-           position: relative;
+            position: relative;
+            text-transform: uppercase;
+            font-size: 0.85rem;
         }
       
 
         nav a:hover {
-            color: #eb1927;
-            text-decoration: underline;
-           /* background: rgba(255,255,255,0.15); */
-            background: #ffffff22;
+            color: #ffffff;
+            text-decoration: none;
+            background: rgba(235, 25, 39, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(235, 25, 39, 0.4);
         }
 
         nav a::after {
@@ -176,20 +179,21 @@
           left: 0;
           bottom: -3px;
           width: 0;
-          height: 2px;
-          background: #EB1927;
+          height: 0px;
+          background: transparent;
           transition: width 0.3s ease;
         }
         
         nav a:hover::after,
         nav a.active::after {
-          width: 100%;
+          width: 0%;
         }
 
       nav a.active {
-        color: #EB1927;
-        background: none;
+        color: #ffffff;
+        background: #EB1927;
         font-weight: 700;
+        box-shadow: 0 2px 8px rgba(235, 25, 39, 0.3);
       }
 
       @media (max-width: 768px) {
@@ -206,16 +210,43 @@
         .election-date {
             text-align: center;
             margin-top: -1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             font-size: 3rem;
             color: #EB1927;
             font-weight: 700;
           }
 
+        .calendar-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #053656;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .calendar-link:hover {
+            background: #EB1927;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(235, 25, 39, 0.3);
+        }
+
+        .calendar-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
 
         nav a.active {
-          background: rgba(255,255,255,0.2);
-          color: #EB1927;
+          background: #EB1927;
+          color: #ffffff;
+          box-shadow: 0 2px 8px rgba(235, 25, 39, 0.3);
         }
 
         /* Hamburger Menu */
@@ -778,6 +809,15 @@
             .footer-section ul {
               gap: 1rem;
             }
+
+            .election-date {
+                font-size: 2rem;
+            }
+
+            .calendar-link {
+                font-size: 0.85rem;
+                padding: 8px 16px;
+            }
         }
         .hero {
           padding-top: 100px; /* ensures not hidden behind fixed nav */
@@ -802,6 +842,55 @@
     </style>
 </head>
 <body>
+    <!-- 
+    ========================================
+    DESIGN RECOMMENDATIONS FOR FUTURE UPDATES:
+    ========================================
+    
+    1. TYPOGRAPHY ENHANCEMENT:
+       - Consider using Google Fonts like "Montserrat" or "Poppins" for headings
+       - Current font stack is good but could be more distinctive
+       - Add font-weight variations (300, 400, 600, 700) for hierarchy
+    
+    2. CALL-TO-ACTION IMPROVEMENTS:
+       - Add a prominent "Donate" button in the nav (right side)
+       - Make the sticky CTA more visible with a pulsing animation
+       - Consider adding social proof (number of supporters/volunteers)
+    
+    3. VISUAL ENHANCEMENTS:
+       - Add a subtle pattern or texture to section backgrounds
+       - Consider alternating background colors for sections (white/light gray)
+       - Add icons to the platform items for visual interest
+       - Include testimonial/endorsement cards with photos
+    
+    4. ENGAGEMENT FEATURES:
+       - Add a progress tracker showing "X days until election"
+       - Include a volunteer impact counter
+       - Add a "Share this campaign" social share buttons
+       - Consider a small video introduction section
+    
+    5. MOBILE OPTIMIZATION:
+       - The site is responsive but could add mobile-specific CTAs
+       - Consider a mobile sticky header with quick actions
+       - Optimize image sizes for faster mobile loading
+    
+    6. ACCESSIBILITY:
+       - All images have alt text ✓
+       - Consider adding aria-labels to more interactive elements
+       - Ensure color contrast ratios meet WCAG AA standards
+    
+    7. PERFORMANCE:
+       - Implement lazy loading for images ✓ (partially done)
+       - Consider adding a service worker for offline access
+       - Minify CSS and JS for production
+    
+    8. CONTENT ADDITIONS:
+       - "News" or "Updates" section for campaign announcements
+       - "Events" calendar showing where you'll be speaking
+       - "Compare" section showing your positions vs. opponents
+       - FAQ section addressing common voter questions
+    ========================================
+    -->
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -827,6 +916,12 @@
   <!-- Home section -->
 <section id="home" class="hero">
   <p class="election-date">Election Date: <strong>April 13, 2026</strong></p>
+  <a href="#" class="calendar-link" id="addToCalendar">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+    Add to Calendar
+  </a>
   <h2>Kadion Phillips for Sturbridge Select Board</h2>
   <p>Experienced. Transparent. Community-Focused.</p>
 </section>
@@ -1097,6 +1192,24 @@
               stickyCta.classList.remove('visible');
             }
           }
+        });
+
+        // Add to Calendar functionality
+        document.getElementById('addToCalendar').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Event details
+            const title = 'Sturbridge Town Election - Vote for Kadion Phillips for Select Board';
+            const location = 'Sturbridge Town Hall';
+            const details = 'Remember to vote for Kadion Phillips for Sturbridge Select Board!';
+            const startDate = '20260413T080000'; // April 13, 2026, 8:00 AM
+            const endDate = '20260413T120000'; // April 13, 2026, 12:00 PM (noon)
+            
+            // Generate Google Calendar URL
+            const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+            
+            // Open in new window
+            window.open(googleCalUrl, '_blank');
         });
                 
         // Contact form Ajax submission
