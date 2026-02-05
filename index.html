@@ -246,6 +246,50 @@
             height: 20px;
         }
 
+        /* Calendar Dropdown */
+        .calendar-dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        .calendar-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+          min-width: 220px;
+          z-index: 50;
+          margin-top: 8px;
+          overflow: hidden;
+        }
+
+        .calendar-menu.show {
+          display: block;
+        }
+
+        .calendar-menu a {
+          display: block;
+          padding: 12px 20px;
+          color: #053656;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+          transition: background 0.2s, color 0.2s;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .calendar-menu a:last-child {
+          border-bottom: none;
+        }
+
+        .calendar-menu a:hover {
+          background: #053656;
+          color: white;
+        }
 
         nav a.active {
           background: #EB1927;
@@ -307,7 +351,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px 5%;
-            scroll-margin-top: 100px; /* Match your fixed nav height */
+            scroll-margin-top: 100px;
         }
 
         h3 {
@@ -321,17 +365,15 @@
         }
 
         /* About Section */
-       /* ---------- About Section Layout ---------- */
             .about-content {
               max-width: 1000px;
               margin: 0 auto;
               font-size: 1.1rem;
               line-height: 1.75;
               color: #444;
-              overflow: hidden; /* keeps float inside container */
+              overflow: hidden;
             }
             
-            /* Desktop image default */
             .about-image {
               float: left;
               width: 200px;
@@ -350,12 +392,9 @@
               text-align: justify;
             }
             
-            /* -------- Mobile Behavior -------- */
             @media (max-width: 768px) {
-            
-              /* shrink to 20% viewport width, still float left for wrapping */
               .about-image {
-                width: 30vw; /* 30% of screen width */
+                width: 30vw;
                 margin: 0 0.8rem 0.8rem 0;
               }
             
@@ -365,10 +404,7 @@
               }
             }
             
-            /* -------- Safety fallback for VERY tiny screens -------- */
             @media (max-width: 380px) {
-            
-              /* if viewport too narrow, stack for readability */
               .about-image {
                 float: none;
                 display: block;
@@ -381,7 +417,6 @@
               }
             }
             
-            /* Clear floats */
             .about-content::after {
               content: "";
               display: table;
@@ -389,7 +424,6 @@
             }
 
 
-/* Image Slider */
             /* === Fade Slider with Pinch Zoom === */
             .slider-container {
               position: relative;
@@ -424,12 +458,10 @@
               touch-action: none;
             }
 
-            /* Lazy loading placeholder */
             .slide img[loading="lazy"] {
               background: #f0f0f0;
             }
             
-            /* Navigation arrows */
             .slider-btn {
               position: absolute;
               top: 50%;
@@ -447,7 +479,6 @@
             .slider-btn.prev { left: 12px; }
             .slider-btn.next { right: 12px; }
             
-            /* Dots */
             .slider-dots {
               position: absolute;
               bottom: 14px;
@@ -471,15 +502,13 @@
               background: white;
             }
             
-            /* Mobile support */
             @media (max-width: 768px) {
               .slider-container {
                 height: 300px;
               }
             }
 
-        /* Contact Form */
-/* Contact Form Theme Colors */
+        /* Contact Form Theme Colors */
         .contact-form {
           background: #f1f5f9;
           border: 2px solid #05365622;
@@ -490,7 +519,8 @@
           margin: 0 auto;
         }
       
-        #contact .contact-desc {
+        #contact .contact-desc,
+        #donate .contact-desc {
               max-width: 600px;
               margin: 0 auto 20px auto;
               font-size: 1rem;
@@ -504,7 +534,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Apply block labels ONLY for text inputs, email, textarea, etc */
         .form-group:not(.checkbox-group) label {
             display: block;
             margin-bottom: 0.5rem;
@@ -532,7 +561,6 @@
             resize: vertical;
         }
 
-        /* Form error messages for screen readers */
         .form-error {
           color: #EB1927;
           font-size: 0.9rem;
@@ -597,7 +625,6 @@
         border-left: 5px solid #EB1927;
       }
       
-      /* Fix checkbox label from becoming block */
         .checkbox-wrapper {
           display: flex !important;
           align-items: center;
@@ -617,7 +644,7 @@
           color: #2c3e50;
         }
 
-        /* Experience Section Improvements */
+        /* Experience Section */
         .experience-category {
           margin-bottom: 2.5rem;
         }
@@ -816,6 +843,8 @@
           transition: all 0.3s ease;
           color: white;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          border: none;
+          cursor: pointer;
         }
 
         .share-btn svg {
@@ -1068,7 +1097,7 @@
             }
         }
         .hero {
-          padding-top: 100px; /* ensures not hidden behind fixed nav */
+          padding-top: 100px;
           padding-bottom: 20px;
           text-align: center;
           background: none;
@@ -1093,55 +1122,6 @@
     </style>
 </head>
 <body>
-    <!-- 
-    ========================================
-    DESIGN RECOMMENDATIONS FOR FUTURE UPDATES:
-    ========================================
-    
-    1. TYPOGRAPHY ENHANCEMENT:
-       - Consider using Google Fonts like "Montserrat" or "Poppins" for headings
-       - Current font stack is good but could be more distinctive
-       - Add font-weight variations (300, 400, 600, 700) for hierarchy
-    
-    2. CALL-TO-ACTION IMPROVEMENTS:
-       - Add a prominent "Donate" button in the nav (right side)
-       - Make the sticky CTA more visible with a pulsing animation
-       - Consider adding social proof (number of supporters/volunteers)
-    
-    3. VISUAL ENHANCEMENTS:
-       - Add a subtle pattern or texture to section backgrounds
-       - Consider alternating background colors for sections (white/light gray)
-       - Add icons to the platform items for visual interest
-       - Include testimonial/endorsement cards with photos
-    
-    4. ENGAGEMENT FEATURES:
-       - Add a progress tracker showing "X days until election"
-       - Include a volunteer impact counter
-       - Add a "Share this campaign" social share buttons
-       - Consider a small video introduction section
-    
-    5. MOBILE OPTIMIZATION:
-       - The site is responsive but could add mobile-specific CTAs
-       - Consider a mobile sticky header with quick actions
-       - Optimize image sizes for faster mobile loading
-    
-    6. ACCESSIBILITY:
-       - All images have alt text ✓
-       - Consider adding aria-labels to more interactive elements
-       - Ensure color contrast ratios meet WCAG AA standards
-    
-    7. PERFORMANCE:
-       - Implement lazy loading for images ✓ (partially done)
-       - Consider adding a service worker for offline access
-       - Minify CSS and JS for production
-    
-    8. CONTENT ADDITIONS:
-       - "News" or "Updates" section for campaign announcements
-       - "Events" calendar showing where you'll be speaking
-       - "Compare" section showing your positions vs. opponents
-       - FAQ section addressing common voter questions
-    ========================================
-    -->
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -1170,28 +1150,22 @@
 <section id="home" class="hero">
   <p class="election-date">Election Date: <strong>April 13, 2026</strong></p>
 
-  <!--
-  <a href="#" class="calendar-link" id="addToCalendar" aria-label="Add election day to your calendar">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-    </svg>
-    Add to Calendar
-  </a>
-  -->
-
   <div class="calendar-dropdown">
-<a href="#" class="calendar-link" id="calendarToggle">
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-Add to Calendar
-</a>
-<div class="calendar-menu" id="calendarMenu">
-<a href="#" id="googleCal">Google Calendar</a>
-<a href="#" id="appleCal">Apple Calendar</a>
-<a href="#" id="outlookCal">Outlook</a>
-<a href="#" id="yahooCal">Yahoo Calendar</a>
-<a href="#" id="icsDownload">Download ICS File</a>
-</div>
-</div>
+    <a href="#" class="calendar-link" id="calendarToggle" aria-label="Add election day to your calendar">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+      </svg>
+      Add to Calendar ▾
+    </a>
+    <div class="calendar-menu" id="calendarMenu">
+      <a href="#" id="googleCal">📅 Google Calendar</a>
+      <a href="#" id="appleCal">🍎 Apple Calendar</a>
+      <a href="#" id="outlookCal">📧 Outlook</a>
+      <a href="#" id="yahooCal">📌 Yahoo Calendar</a>
+      <a href="#" id="icsDownload">⬇️ Download ICS File</a>
+    </div>
+  </div>
+
   <h2>Kadion Phillips for Sturbridge Select Board</h2>
   <p>Experienced. Transparent. Community-Focused.</p>
 </section>
@@ -1365,9 +1339,6 @@ Add to Calendar
             <p style="text-align: center; margin-bottom: 2rem; color: #444;">Join me at upcoming campaign events to discuss the issues that matter most to Sturbridge. All events are open to the public.</p>
             
             <div class="events-grid">
-         
-
-          
 
                 <!-- Event Card 3 -->
                 <div class="event-card">
@@ -1518,8 +1489,6 @@ Add to Calendar
 </section>
 
 
-
-
   
   <!-- Contact Section -->
 <section id="contact">
@@ -1607,107 +1576,187 @@ Add to Calendar
         </div>
     </footer>
 
+    <!-- ============================================================
+         SINGLE CLEAN SCRIPT BLOCK — all duplicates removed
+         ============================================================ -->
     <script>
-        // Hamburger menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
+    (function() {
+        // ── Pre-fill subject from CTA buttons ──
+        window.setSubject = function(subject) {
+            setTimeout(function() {
+                var el = document.getElementById('subject');
+                if (el) el.value = subject;
+            }, 500);
+        };
 
-        hamburger.addEventListener('click', () => {
-            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+        // ── Hamburger Menu ──
+        var hamburger = document.getElementById('hamburger');
+        var navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', function() {
+            var isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
             hamburger.setAttribute('aria-expanded', !isExpanded);
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
+        // Close menu on link click
+        document.querySelectorAll('nav a').forEach(function(link) {
+            link.addEventListener('click', function() {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // ── Smooth scrolling for anchor links ──
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                var target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
-      
-        // Pre-fill subject line from CTA buttons
-        function setSubject(subject) {
-          setTimeout(() => {
-            document.getElementById('subject').value = subject;
-          }, 500);
+
+        // ── Sticky CTA visibility (mobile) ──
+        var stickyCta = document.getElementById('stickyCta');
+        var ctaStrip = document.querySelector('.cta-strip');
+
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 768 && ctaStrip) {
+                if (ctaStrip.getBoundingClientRect().bottom < 0) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+            }
+        });
+
+        // ── Calendar Dropdown ──
+        var calendarToggle = document.getElementById('calendarToggle');
+        var calendarMenu = document.getElementById('calendarMenu');
+
+        calendarToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            calendarMenu.classList.toggle('show');
+        });
+
+        // Close calendar menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.calendar-dropdown')) {
+                calendarMenu.classList.remove('show');
+            }
+        });
+
+        // Calendar event details
+        var calEvent = {
+            title: 'Sturbridge Election - Vote Kadion Phillips for Select Board',
+            location: 'Sturbridge Town Hall',
+            details: 'Remember to vote for Kadion Phillips for Sturbridge Select Board!',
+            start: '20260413T080000',
+            end: '20260413T120000'
+        };
+
+        // Google Calendar
+        document.getElementById('googleCal').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(
+                'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+                '&text=' + encodeURIComponent(calEvent.title) +
+                '&dates=' + calEvent.start + '/' + calEvent.end +
+                '&details=' + encodeURIComponent(calEvent.details) +
+                '&location=' + encodeURIComponent(calEvent.location),
+                '_blank'
+            );
+        });
+
+        // Outlook Calendar
+        document.getElementById('outlookCal').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(
+                'https://outlook.live.com/calendar/0/deeplink/compose' +
+                '?subject=' + encodeURIComponent(calEvent.title) +
+                '&startdt=2026-04-13T08:00:00' +
+                '&enddt=2026-04-13T12:00:00' +
+                '&body=' + encodeURIComponent(calEvent.details) +
+                '&location=' + encodeURIComponent(calEvent.location),
+                '_blank'
+            );
+        });
+
+        // Yahoo Calendar
+        document.getElementById('yahooCal').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(
+                'https://calendar.yahoo.com/?v=60' +
+                '&title=' + encodeURIComponent(calEvent.title) +
+                '&st=' + calEvent.start +
+                '&et=' + calEvent.end +
+                '&desc=' + encodeURIComponent(calEvent.details) +
+                '&in_loc=' + encodeURIComponent(calEvent.location),
+                '_blank'
+            );
+        });
+
+        // ICS file generator (Apple Calendar + generic download)
+        function generateICS() {
+            return [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Kadion Phillips Campaign//EN',
+                'BEGIN:VEVENT',
+                'DTSTART:' + calEvent.start,
+                'DTEND:' + calEvent.end,
+                'SUMMARY:' + calEvent.title,
+                'DESCRIPTION:' + calEvent.details,
+                'LOCATION:' + calEvent.location,
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
         }
 
-        // Sticky CTA visibility on scroll (mobile)
-        const stickyCta = document.getElementById('stickyCta');
-        const ctaStrip = document.querySelector('.cta-strip');
-        
-        window.addEventListener('scroll', () => {
-          if (window.innerWidth <= 768) {
-            const ctaStripRect = ctaStrip.getBoundingClientRect();
-            if (ctaStripRect.bottom < 0) {
-              stickyCta.classList.add('visible');
-            } else {
-              stickyCta.classList.remove('visible');
-            }
-          }
+        function downloadICS() {
+            var blob = new Blob([generateICS()], { type: 'text/calendar;charset=utf-8' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'sturbridge-election-2026.ics';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        document.getElementById('appleCal').addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadICS();
         });
 
-        // Add to Calendar functionality
-        document.getElementById('addToCalendar').addEventListener('click', function(e) {
+        document.getElementById('icsDownload').addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Event details
-            const title = 'Sturbridge Town Election - Vote for Kadion Phillips for Select Board';
-            const location = 'Sturbridge Town Hall';
-            const details = 'Remember to vote for Kadion Phillips for Sturbridge Select Board!';
-            const startDate = '20260413T080000'; // April 13, 2026, 8:00 AM
-            const endDate = '20260413T120000'; // April 13, 2026, 12:00 PM (noon)
-            
-            // Generate Google Calendar URL
-            const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
-            
-            // Open in new window
-            window.open(googleCalUrl, '_blank');
+            downloadICS();
         });
-                
-        // Contact form Ajax submission
+
+        // ── Contact Form Submission ──
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            var formMessage = document.getElementById('formMessage');
+            var submitBtn = this.querySelector('.submit-btn');
             
-            const formMessage = document.getElementById('formMessage');
-            const submitBtn = this.querySelector('.submit-btn');
-            
-            // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             
             try {
-                const response = await fetch(this.action, {
+                var response = await fetch(this.action, {
                     method: 'POST',
                     body: new FormData(this),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
                 
-                console.log('Response status:', response.status);
-                
                 if (response.ok) {
-                    // Clear the form first
                     this.reset();
-                    
-                    // Show success message
                     formMessage.className = 'form-message success';
                     formMessage.textContent = '✓ Message sent successfully! Thank you for reaching out. I will get back to you soon.';
                     formMessage.style.display = 'block';
@@ -1715,232 +1764,202 @@ Add to Calendar
                     throw new Error('Form submission failed');
                 }
             } catch (error) {
-                console.error('Form error:', error);
                 formMessage.className = 'form-message error';
                 formMessage.textContent = '✗ Oops! There was a problem sending your message. Please try again.';
                 formMessage.style.display = 'block';
             } finally {
-                // Always re-enable button
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Send Message';
             }
             
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                formMessage.style.display = 'none';
-            }, 5000);
+            setTimeout(function() { formMessage.style.display = 'none'; }, 5000);
         });
 
-        // Copy link to clipboard functionality
-        document.getElementById('copyLinkBtn').addEventListener('click', function() {
-            const url = 'https://www.kadion.org';
-            const btn = this;
-            const btnText = document.getElementById('copyBtnText');
+        // ── Donation Form Submission ──
+        document.getElementById('donationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var formMessage = document.getElementById('donationFormMessage');
+            var submitBtn = this.querySelector('.submit-btn');
             
-            // Try to copy to clipboard
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            try {
+                var response = await fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    this.reset();
+                    formMessage.className = 'form-message success';
+                    formMessage.textContent = '✓ Thank you for your donation! Your information has been recorded.';
+                    formMessage.style.display = 'block';
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = '✗ There was a problem submitting your information. Please try again.';
+                formMessage.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Donation Information';
+            }
+            
+            setTimeout(function() { formMessage.style.display = 'none'; }, 7000);
+        });
+
+        // ── Copy Link Button ──
+        document.getElementById('copyLinkBtn').addEventListener('click', function() {
+            var url = 'https://www.kadion.org';
+            var btn = this;
+            var btnText = document.getElementById('copyBtnText');
+
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(url).then(() => {
-                    // Success feedback
+                navigator.clipboard.writeText(url).then(function() {
                     btn.classList.add('copied');
                     btnText.textContent = '✓ Link Copied!';
-                    
-                    // Reset after 3 seconds
-                    setTimeout(() => {
+                    setTimeout(function() {
                         btn.classList.remove('copied');
                         btnText.textContent = 'Copy Link';
                     }, 3000);
-                }).catch(err => {
-                    console.error('Failed to copy:', err);
-                    alert('Copy failed. Please copy manually: ' + url);
+                }).catch(function() {
+                    fallbackCopy(url, btn, btnText);
                 });
             } else {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = url;
-                textArea.style.position = 'fixed';
-                textArea.style.left = '-999999px';
-                document.body.appendChild(textArea);
-                textArea.select();
-                
-                try {
-                    document.execCommand('copy');
-                    btn.classList.add('copied');
-                    btnText.textContent = '✓ Link Copied!';
-                    
-                    setTimeout(() => {
-                        btn.classList.remove('copied');
-                        btnText.textContent = 'Copy Link';
-                    }, 3000);
-                } catch (err) {
-                    alert('Copy failed. Please copy manually: ' + url);
-                }
-                
-                document.body.removeChild(textArea);
+                fallbackCopy(url, btn, btnText);
             }
         });
-    </script>
 
-    <script>
-    /* ============================
-       FADE SLIDER + DOTS + BUTTONS + AUTOPLAY + SWIPE + DOUBLE-CLICK
-       ============================ */
-    let currentIndex = 0;
-    const slides = document.querySelectorAll("#fadeSlider .slide");
-    const dotsContainer = document.querySelector("#fadeSlider .slider-dots");
-    const sliderElement = document.querySelector("#fadeSlider");
-    let autoplayInterval;
-
-    // Build dots
-    slides.forEach((_, i) => {
-      const dot = document.createElement("div");
-      dot.className = "dot" + (i === 0 ? " active" : "");
-      dot.addEventListener("click", () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    });
-
-    function updateSlider() {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === currentIndex);
-      });
-
-      document.querySelectorAll("#fadeSlider .dot").forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentIndex);
-      });
-    }
-
-    function goToSlide(index) {
-      currentIndex = (index + slides.length) % slides.length;
-      updateSlider();
-    }
-
-    // Buttons
-    document.querySelector("#fadeSlider .next").addEventListener("click", () => {
-      goToSlide(currentIndex + 1);
-      restartAutoplay();
-    });
-
-    document.querySelector("#fadeSlider .prev").addEventListener("click", () => {
-      goToSlide(currentIndex - 1);
-      restartAutoplay();
-    });
-
-    // Autoplay every 3s
-    function startAutoplay() {
-      autoplayInterval = setInterval(() => {
-        goToSlide(currentIndex + 1);
-      }, 3000);
-    }
-
-    function stopAutoplay() {
-      clearInterval(autoplayInterval);
-    }
-
-    function restartAutoplay() {
-      stopAutoplay();
-      startAutoplay();
-    }
-
-    // Pause autoplay on hover (desktop)
-    sliderElement.addEventListener("mouseenter", stopAutoplay);
-    sliderElement.addEventListener("mouseleave", startAutoplay);
-
-    // --- Swipe Support ---
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const swipeThreshold = 50;
-
-    sliderElement.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-      stopAutoplay();
-    });
-
-    sliderElement.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-      startAutoplay();
-    });
-
-    function handleSwipe() {
-      const diff = touchEndX - touchStartX;
-      if (Math.abs(diff) > swipeThreshold) {
-        if (diff < 0) {
-          goToSlide(currentIndex + 1); // swipe left → next
-        } else {
-          goToSlide(currentIndex - 1); // swipe right → prev
+        function fallbackCopy(url, btn, btnText) {
+            var textArea = document.createElement('textarea');
+            textArea.value = url;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                btn.classList.add('copied');
+                btnText.textContent = '✓ Link Copied!';
+                setTimeout(function() {
+                    btn.classList.remove('copied');
+                    btnText.textContent = 'Copy Link';
+                }, 3000);
+            } catch (err) {
+                alert('Copy failed. Please copy manually: ' + url);
+            }
+            document.body.removeChild(textArea);
         }
-      }
-    }
 
-    // --- Double-click to open full-size image ---
-    slides.forEach(slide => {
-      const img = slide.querySelector("img");
-      img.addEventListener("dblclick", () => {
-        window.open(img.src, "_blank");
-      });
-    });
+        // ── Image Slider ──
+        var currentIndex = 0;
+        var slides = document.querySelectorAll('#fadeSlider .slide');
+        var dotsContainer = document.querySelector('#fadeSlider .slider-dots');
+        var sliderElement = document.querySelector('#fadeSlider');
+        var autoplayInterval;
 
-    // Init
-    updateSlider();
-    startAutoplay();
+        // Build dots
+        slides.forEach(function(_, i) {
+            var dot = document.createElement('div');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', function() { goToSlide(i); restartAutoplay(); });
+            dotsContainer.appendChild(dot);
+        });
+
+        function updateSlider() {
+            slides.forEach(function(slide, i) {
+                slide.classList.toggle('active', i === currentIndex);
+            });
+            document.querySelectorAll('#fadeSlider .dot').forEach(function(dot, i) {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = (index + slides.length) % slides.length;
+            updateSlider();
+        }
+
+        // Slider buttons
+        document.querySelector('#fadeSlider .next').addEventListener('click', function() {
+            goToSlide(currentIndex + 1);
+            restartAutoplay();
+        });
+
+        document.querySelector('#fadeSlider .prev').addEventListener('click', function() {
+            goToSlide(currentIndex - 1);
+            restartAutoplay();
+        });
+
+        // Autoplay
+        function startAutoplay() {
+            autoplayInterval = setInterval(function() { goToSlide(currentIndex + 1); }, 3000);
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        function restartAutoplay() {
+            stopAutoplay();
+            startAutoplay();
+        }
+
+        // Pause on hover
+        sliderElement.addEventListener('mouseenter', stopAutoplay);
+        sliderElement.addEventListener('mouseleave', startAutoplay);
+
+        // Swipe support
+        var touchStartX = 0;
+        var touchEndX = 0;
+
+        sliderElement.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoplay();
+        });
+
+        sliderElement.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            var diff = touchEndX - touchStartX;
+            if (Math.abs(diff) > 50) {
+                if (diff < 0) goToSlide(currentIndex + 1);
+                else goToSlide(currentIndex - 1);
+            }
+            startAutoplay();
+        });
+
+        // Double-click to open full image
+        slides.forEach(function(slide) {
+            var img = slide.querySelector('img');
+            img.addEventListener('dblclick', function() {
+                window.open(img.src, '_blank');
+            });
+        });
+
+        // Init slider
+        updateSlider();
+        startAutoplay();
+
+        // ── Active Nav Highlighting on Scroll ──
+        var sections = document.querySelectorAll('section');
+        var navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', function() {
+            var current = '';
+            sections.forEach(function(section) {
+                var top = section.offsetTop - 120;
+                if (window.pageYOffset >= top) current = section.getAttribute('id');
+            });
+            navLinks.forEach(function(a) {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        });
+
+    })();
     </script>
-
-    <script>
-    // Active navigation highlighting on scroll
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const top = section.offsetTop - 120;
-        if (pageYOffset >= top) current = section.getAttribute("id");
-      });
-      navLinks.forEach(a => {
-        a.classList.toggle("active", a.getAttribute("href") === `#${current}`);
-      });
-    });
-    </script>
-
-  <script>
-function setSubject(s){setTimeout(()=>document.getElementById('subject').value=s,500)}
-const hb=document.getElementById('hamburger'),nm=document.getElementById('navMenu');
-hb.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.toggle('active')});
-document.querySelectorAll('nav a').forEach(l=>l.addEventListener('click',()=>{hb.classList.remove('active');nm.classList.remove('active')}));
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}));
-const sc=document.getElementById('stickyCta'),cs=document.querySelector('.cta-strip');
-window.addEventListener('scroll',()=>{if(window.innerWidth<=768){cs.getBoundingClientRect().bottom<0?sc.classList.add('visible'):sc.classList.remove('visible')}});
-const ct=document.getElementById('calendarToggle'),cm=document.getElementById('calendarMenu');
-ct.addEventListener('click',e=>{e.preventDefault();cm.classList.toggle('show')});
-document.addEventListener('click',e=>{if(!e.target.closest('.calendar-dropdown'))cm.classList.remove('show')});
-const ev={title:'Sturbridge Election - Vote Kadion Phillips',location:'Sturbridge Town Hall',details:'Vote for Kadion Phillips for Select Board!',start:'20260413T080000',end:'20260413T120000'};
-document.getElementById('googleCal').addEventListener('click',e=>{e.preventDefault();window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(ev.title)}&dates=${ev.start}/${ev.end}&details=${encodeURIComponent(ev.details)}&location=${encodeURIComponent(ev.location)}`,'_blank')});
-document.getElementById('outlookCal').addEventListener('click',e=>{e.preventDefault();window.open(`https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(ev.title)}&startdt=${ev.start}&enddt=${ev.end}&body=${encodeURIComponent(ev.details)}&location=${encodeURIComponent(ev.location)}`,'_blank')});
-document.getElementById('yahooCal').addEventListener('click',e=>{e.preventDefault();window.open(`https://calendar.yahoo.com/?v=60&title=${encodeURIComponent(ev.title)}&st=${ev.start}&et=${ev.end}&desc=${encodeURIComponent(ev.details)}&in_loc=${encodeURIComponent(ev.location)}`,'_blank')});
-function genICS(){return`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${ev.start}\nDTEND:${ev.end}\nSUMMARY:${ev.title}\nDESCRIPTION:${ev.details}\nLOCATION:${ev.location}\nEND:VEVENT\nEND:VCALENDAR`}
-document.getElementById('appleCal').addEventListener('click',e=>{e.preventDefault();const b=new Blob([genICS()],{type:'text/calendar'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='election.ics';a.click();URL.revokeObjectURL(u)});
-document.getElementById('icsDownload').addEventListener('click',e=>{e.preventDefault();const b=new Blob([genICS()],{type:'text/calendar'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='election.ics';a.click();URL.revokeObjectURL(u)});
-document.getElementById('contactForm').addEventListener('submit',async function(e){e.preventDefault();const m=document.getElementById('contactMsg'),btn=this.querySelector('.submit-btn');btn.disabled=true;btn.textContent='Sending...';try{const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});if(r.ok){this.reset();m.className='form-message success';m.textContent='✓ Message sent!';m.style.display='block'}else throw new Error()}catch(err){m.className='form-message error';m.textContent='✗ Error. Try again.';m.style.display='block'}finally{btn.disabled=false;btn.textContent='Send Message'}setTimeout(()=>m.style.display='none',5000)});
-document.getElementById('donateForm').addEventListener('submit',async function(e){e.preventDefault();const m=document.getElementById('donateMsg'),btn=this.querySelector('.submit-btn');btn.disabled=true;btn.textContent='Submitting...';try{const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});if(r.ok){this.reset();m.className='form-message success';m.textContent='✓ Thank you!';m.style.display='block'}else throw new Error()}catch(err){m.className='form-message error';m.textContent='✗ Error. Try again.';m.style.display='block'}finally{btn.disabled=false;btn.textContent='Submit Info'}setTimeout(()=>m.style.display='none',7000)});
-document.getElementById('copyBtn').addEventListener('click',function(){const url='https://www.kadion.org',btn=this,txt=document.getElementById('copyText');if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>{btn.classList.add('copied');txt.textContent='✓ Copied!';setTimeout(()=>{btn.classList.remove('copied');txt.textContent='Copy Link'},3000)})}else{const t=document.createElement('textarea');t.value=url;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();try{document.execCommand('copy');btn.classList.add('copied');txt.textContent='✓ Copied!';setTimeout(()=>{btn.classList.remove('copied');txt.textContent='Copy Link'},3000)}catch(e){}document.body.removeChild(t)}});
-let ci=0;const slides=document.querySelectorAll("#fadeSlider .slide"),dots=document.querySelector("#fadeSlider .slider-dots"),slider=document.querySelector("#fadeSlider");let auto;
-slides.forEach((_,i)=>{const d=document.createElement("div");d.className="dot"+(i===0?" active":"");d.addEventListener("click",()=>goTo(i));dots.appendChild(d)});
-function update(){slides.forEach((s,i)=>s.classList.toggle("active",i===ci));document.querySelectorAll("#fadeSlider .dot").forEach((d,i)=>d.classList.toggle("active",i===ci))}
-function goTo(i){ci=(i+slides.length)%slides.length;update()}
-document.querySelector("#fadeSlider .next").addEventListener("click",()=>{goTo(ci+1);restart()});
-document.querySelector("#fadeSlider .prev").addEventListener("click",()=>{goTo(ci-1);restart()});
-function start(){auto=setInterval(()=>goTo(ci+1),3000)}
-function stop(){clearInterval(auto)}
-function restart(){stop();start()}
-slider.addEventListener("mouseenter",stop);
-slider.addEventListener("mouseleave",start);
-let tx=0,te=0;
-slider.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;stop()});
-slider.addEventListener('touchend',e=>{te=e.changedTouches[0].screenX;const d=te-tx;if(Math.abs(d)>50){d<0?goTo(ci+1):goTo(ci-1)}start()});
-slides.forEach(s=>{const img=s.querySelector("img");img.addEventListener("dblclick",()=>window.open(img.src,"_blank"))});
-update();start();
-const secs=document.querySelectorAll("section"),links=document.querySelectorAll("nav a");
-window.addEventListener("scroll",()=>{let cur="";secs.forEach(s=>{const top=s.offsetTop-120;if(pageYOffset>=top)cur=s.getAttribute("id")});links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")===`#${cur}`))});
-</script>
 
 </body>
 </html>
