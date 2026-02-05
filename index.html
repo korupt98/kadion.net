@@ -1159,6 +1159,7 @@
                 <li role="none"><a href="#platform" role="menuitem" aria-label="View campaign platform">Platform</a></li>
                 <li role="none"><a href="#experience" role="menuitem" aria-label="View experience and qualifications">Experience</a></li>
                 <li role="none"><a href="#events" role="menuitem" aria-label="View upcoming events">Events</a></li>
+                <li role="none"><a href="#donate" role="menuitem" aria-label="Donate">Donate</a></li>
                 <li role="none"><a href="#contact" role="menuitem" aria-label="Contact the campaign">Contact</a></li>
             </ul>
         </div>
@@ -1168,12 +1169,29 @@
   <!-- Home section -->
 <section id="home" class="hero">
   <p class="election-date">Election Date: <strong>April 13, 2026</strong></p>
+
+  <!--
   <a href="#" class="calendar-link" id="addToCalendar" aria-label="Add election day to your calendar">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
     </svg>
     Add to Calendar
   </a>
+  -->
+
+  <div class="calendar-dropdown">
+<a href="#" class="calendar-link" id="calendarToggle">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+Add to Calendar
+</a>
+<div class="calendar-menu" id="calendarMenu">
+<a href="#" id="googleCal">Google Calendar</a>
+<a href="#" id="appleCal">Apple Calendar</a>
+<a href="#" id="outlookCal">Outlook</a>
+<a href="#" id="yahooCal">Yahoo Calendar</a>
+<a href="#" id="icsDownload">Download ICS File</a>
+</div>
+</div>
   <h2>Kadion Phillips for Sturbridge Select Board</h2>
   <p>Experienced. Transparent. Community-Focused.</p>
 </section>
@@ -1464,6 +1482,45 @@
         </div>
     </section>
 
+
+<section id="donate">
+<h3>Support the Campaign</h3>
+<p class="contact-desc">Your contribution helps us reach more voters and strengthen our community. Every donation, no matter the size, makes a difference.</p>
+<div style="max-width:700px;margin:0 auto">
+<div style="background:#008CFF;color:white;padding:2rem;border-radius:8px;text-align:center;margin-bottom:2rem">
+<h4 style="color:white;margin-bottom:1rem;font-size:1.5rem">Donate via Venmo</h4>
+<p style="margin-bottom:1.5rem;font-size:1.1rem">@electkadion</p>
+<a href="https://venmo.com/electkadion" target="_blank" rel="noopener" style="display:inline-block;background:white;color:#008CFF;padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:700;font-size:1.1rem;transition:all .3s">Open Venmo App</a>
+<p style="margin-top:1.5rem;font-size:.95rem;opacity:.9">After donating, please fill out the form below so we can properly record your contribution.</p>
+</div>
+<form class="contact-form" id="donationForm" action="https://formspree.io/f/xqepaqpo" method="POST" style="background:#f8f9fa">
+<h4 style="text-align:center;color:#053656;margin-bottom:1.5rem;font-size:1.3rem">Donation Information</h4>
+<p style="text-align:center;margin-bottom:1.5rem;color:#666;font-size:.95rem">Please provide your information for FEC compliance and to receive a receipt.</p>
+<input type="hidden" name="form_type" value="Donation">
+<div class="form-group"><label for="donor_name">Full Name *</label><input type="text" id="donor_name" name="donor_name" required></div>
+<div class="form-group"><label for="donor_email">Email *</label><input type="email" id="donor_email" name="donor_email" required></div>
+<div class="form-group"><label for="donor_phone">Phone (optional)</label><input type="tel" id="donor_phone" name="donor_phone"></div>
+<div class="form-group"><label for="donor_address">Street Address *</label><input type="text" id="donor_address" name="donor_address" required></div>
+<div class="form-group"><label for="donor_city">City *</label><input type="text" id="donor_city" name="donor_city" required></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+<div class="form-group"><label for="donor_state">State *</label><input type="text" id="donor_state" name="donor_state" value="MA" required></div>
+<div class="form-group"><label for="donor_zip">ZIP Code *</label><input type="text" id="donor_zip" name="donor_zip" required pattern="[0-9]{5}"></div>
+</div>
+<div class="form-group"><label for="donation_amount">Donation Amount *</label><input type="number" id="donation_amount" name="donation_amount" min="1" step="0.01" required placeholder="$"></div>
+<div class="form-group"><label for="donation_date">Date of Donation *</label><input type="date" id="donation_date" name="donation_date" required></div>
+<div class="form-group"><label for="occupation">Occupation *</label><input type="text" id="occupation" name="occupation" required><small style="display:block;margin-top:.25rem;color:#666">Required for FEC compliance</small></div>
+<div class="form-group"><label for="employer">Employer *</label><input type="text" id="employer" name="employer" required><small style="display:block;margin-top:.25rem;color:#666">Required for FEC compliance</small></div>
+<button type="submit" class="submit-btn">Submit Donation Information</button>
+<div class="form-message" id="donationFormMessage"></div>
+<p style="margin-top:1.5rem;font-size:.85rem;color:#666;text-align:center;line-height:1.6"><strong>Contribution Rules:</strong> I am a U.S. citizen or lawfully admitted permanent resident. This contribution is made from my own funds and not from funds provided by another person. Contributions are not tax deductible.</p>
+</form>
+</div>
+</section>
+
+
+
+
+  
   <!-- Contact Section -->
 <section id="contact">
     <h3>Get In Touch</h3>
@@ -1843,6 +1900,47 @@
       });
     });
     </script>
+
+  <script>
+function setSubject(s){setTimeout(()=>document.getElementById('subject').value=s,500)}
+const hb=document.getElementById('hamburger'),nm=document.getElementById('navMenu');
+hb.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.toggle('active')});
+document.querySelectorAll('nav a').forEach(l=>l.addEventListener('click',()=>{hb.classList.remove('active');nm.classList.remove('active')}));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}));
+const sc=document.getElementById('stickyCta'),cs=document.querySelector('.cta-strip');
+window.addEventListener('scroll',()=>{if(window.innerWidth<=768){cs.getBoundingClientRect().bottom<0?sc.classList.add('visible'):sc.classList.remove('visible')}});
+const ct=document.getElementById('calendarToggle'),cm=document.getElementById('calendarMenu');
+ct.addEventListener('click',e=>{e.preventDefault();cm.classList.toggle('show')});
+document.addEventListener('click',e=>{if(!e.target.closest('.calendar-dropdown'))cm.classList.remove('show')});
+const ev={title:'Sturbridge Election - Vote Kadion Phillips',location:'Sturbridge Town Hall',details:'Vote for Kadion Phillips for Select Board!',start:'20260413T080000',end:'20260413T120000'};
+document.getElementById('googleCal').addEventListener('click',e=>{e.preventDefault();window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(ev.title)}&dates=${ev.start}/${ev.end}&details=${encodeURIComponent(ev.details)}&location=${encodeURIComponent(ev.location)}`,'_blank')});
+document.getElementById('outlookCal').addEventListener('click',e=>{e.preventDefault();window.open(`https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(ev.title)}&startdt=${ev.start}&enddt=${ev.end}&body=${encodeURIComponent(ev.details)}&location=${encodeURIComponent(ev.location)}`,'_blank')});
+document.getElementById('yahooCal').addEventListener('click',e=>{e.preventDefault();window.open(`https://calendar.yahoo.com/?v=60&title=${encodeURIComponent(ev.title)}&st=${ev.start}&et=${ev.end}&desc=${encodeURIComponent(ev.details)}&in_loc=${encodeURIComponent(ev.location)}`,'_blank')});
+function genICS(){return`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${ev.start}\nDTEND:${ev.end}\nSUMMARY:${ev.title}\nDESCRIPTION:${ev.details}\nLOCATION:${ev.location}\nEND:VEVENT\nEND:VCALENDAR`}
+document.getElementById('appleCal').addEventListener('click',e=>{e.preventDefault();const b=new Blob([genICS()],{type:'text/calendar'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='election.ics';a.click();URL.revokeObjectURL(u)});
+document.getElementById('icsDownload').addEventListener('click',e=>{e.preventDefault();const b=new Blob([genICS()],{type:'text/calendar'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='election.ics';a.click();URL.revokeObjectURL(u)});
+document.getElementById('contactForm').addEventListener('submit',async function(e){e.preventDefault();const m=document.getElementById('contactMsg'),btn=this.querySelector('.submit-btn');btn.disabled=true;btn.textContent='Sending...';try{const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});if(r.ok){this.reset();m.className='form-message success';m.textContent='✓ Message sent!';m.style.display='block'}else throw new Error()}catch(err){m.className='form-message error';m.textContent='✗ Error. Try again.';m.style.display='block'}finally{btn.disabled=false;btn.textContent='Send Message'}setTimeout(()=>m.style.display='none',5000)});
+document.getElementById('donateForm').addEventListener('submit',async function(e){e.preventDefault();const m=document.getElementById('donateMsg'),btn=this.querySelector('.submit-btn');btn.disabled=true;btn.textContent='Submitting...';try{const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});if(r.ok){this.reset();m.className='form-message success';m.textContent='✓ Thank you!';m.style.display='block'}else throw new Error()}catch(err){m.className='form-message error';m.textContent='✗ Error. Try again.';m.style.display='block'}finally{btn.disabled=false;btn.textContent='Submit Info'}setTimeout(()=>m.style.display='none',7000)});
+document.getElementById('copyBtn').addEventListener('click',function(){const url='https://www.kadion.org',btn=this,txt=document.getElementById('copyText');if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>{btn.classList.add('copied');txt.textContent='✓ Copied!';setTimeout(()=>{btn.classList.remove('copied');txt.textContent='Copy Link'},3000)})}else{const t=document.createElement('textarea');t.value=url;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();try{document.execCommand('copy');btn.classList.add('copied');txt.textContent='✓ Copied!';setTimeout(()=>{btn.classList.remove('copied');txt.textContent='Copy Link'},3000)}catch(e){}document.body.removeChild(t)}});
+let ci=0;const slides=document.querySelectorAll("#fadeSlider .slide"),dots=document.querySelector("#fadeSlider .slider-dots"),slider=document.querySelector("#fadeSlider");let auto;
+slides.forEach((_,i)=>{const d=document.createElement("div");d.className="dot"+(i===0?" active":"");d.addEventListener("click",()=>goTo(i));dots.appendChild(d)});
+function update(){slides.forEach((s,i)=>s.classList.toggle("active",i===ci));document.querySelectorAll("#fadeSlider .dot").forEach((d,i)=>d.classList.toggle("active",i===ci))}
+function goTo(i){ci=(i+slides.length)%slides.length;update()}
+document.querySelector("#fadeSlider .next").addEventListener("click",()=>{goTo(ci+1);restart()});
+document.querySelector("#fadeSlider .prev").addEventListener("click",()=>{goTo(ci-1);restart()});
+function start(){auto=setInterval(()=>goTo(ci+1),3000)}
+function stop(){clearInterval(auto)}
+function restart(){stop();start()}
+slider.addEventListener("mouseenter",stop);
+slider.addEventListener("mouseleave",start);
+let tx=0,te=0;
+slider.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;stop()});
+slider.addEventListener('touchend',e=>{te=e.changedTouches[0].screenX;const d=te-tx;if(Math.abs(d)>50){d<0?goTo(ci+1):goTo(ci-1)}start()});
+slides.forEach(s=>{const img=s.querySelector("img");img.addEventListener("dblclick",()=>window.open(img.src,"_blank"))});
+update();start();
+const secs=document.querySelectorAll("section"),links=document.querySelectorAll("nav a");
+window.addEventListener("scroll",()=>{let cur="";secs.forEach(s=>{const top=s.offsetTop-120;if(pageYOffset>=top)cur=s.getAttribute("id")});links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")===`#${cur}`))});
+</script>
 
 </body>
 </html>
