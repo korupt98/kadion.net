@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Elect Kadion Phillips</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+header { padding: 20px; text-align: center; background: #0b3d2e; color: #fff; }
+section { padding: 30px; max-width: 800px; margin: auto; }
+button { padding: 12px 18px; font-size: 16px; cursor: pointer; }
+.calendar-menu { display:none; margin-top:10px; }
+.calendar-menu a { display:block; margin:6px 0; color:#0b3d2e; text-decoration:none; }
+form input { width:100%; padding:10px; margin:8px 0; }
+</style>
+<script>
+function toggleCalendar() {
+  const m = document.getElementById('calendarMenu');
+  m.style.display = m.style.display === 'block' ? 'none' : 'block';
+}
+function donate(e) {
+  e.preventDefault();
+  window.open('https://account.venmo.com/u/electkadion','_blank');
+}
+</script>
+</head>
+<body>
+
+<header>
+  <h1>Elect Kadion Phillips</h1>
+</header>
+
+<section>
+  <h2>Election Day</h2>
+  <p>Vote on March 5</p>
+  <button onclick="toggleCalendar()">Add to Calendar</button>
+  <div id="calendarMenu" class="calendar-menu">
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Election+Day+-+Vote+Kadion+Phillips&dates=20260305T120000Z/20260305T130000Z" target="_blank">Google Calendar</a>
+    <a href="election-day.ics">Apple / Outlook / iCal</a>
+  </div>
+</section>
+
+<section>
+  <h2>Donate</h2>
+  <form onsubmit="donate(event)">
+    <input required placeholder="Full Name">
+    <input type="email" required placeholder="Email Address">
+    <input required placeholder="Mailing Address">
+    <button type="submit">Continue to Venmo</button>
+  </form>
+</section>
+
+</body>
+</html>
