@@ -118,6 +118,21 @@
           display: block;
         }
 
+        .sticky-donate {
+          right: auto;
+          left: 20px;
+          background: #053656;
+        }
+
+        .sticky-donate:hover {
+          background: #EB1927;
+          transform: scale(1.05);
+        }
+
+        .sticky-donate.visible {
+          display: block;
+        }
+
       
         /* Navigation */
         nav {
@@ -1236,6 +1251,7 @@
 
     <!-- Sticky CTA for mobile -->
     <a href="#contact" class="sticky-cta" id="stickyCta" aria-label="Get involved with the campaign">Get Involved →</a>
+    <a href="#donate" class="sticky-cta sticky-donate" id="stickyDonate" aria-label="Donate to the campaign">Donate ❤</a>
 
 
     <!-- About Section -->
@@ -1462,11 +1478,20 @@
 <h4 style="color:white;margin-bottom:1rem;font-size:1.5rem">Donate via Venmo</h4>
 <p style="margin-bottom:1.5rem;font-size:1.1rem">@electkadion</p>
 <a href="https://venmo.com/electkadion" target="_blank" rel="noopener" style="display:inline-block;background:white;color:#008CFF;padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:700;font-size:1.1rem;transition:all .3s">Open Venmo App</a>
-<p style="margin-top:1.5rem;font-size:.95rem;opacity:.9">After donating, please fill out the form below so we can properly record your contribution.</p>
 </div>
-<form class="contact-form" id="donationForm" action="https://formspree.io/f/xqepaqpo" method="POST" style="background:#f8f9fa">
+
+<!-- Toggle buttons to reveal the form -->
+<div id="donateToggleArea" style="text-align:center;margin-bottom:2rem">
+<p style="color:#444;margin-bottom:1rem;font-size:1.05rem">Already donated or planning to? Let us know so we can record your contribution.</p>
+<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+<button class="submit-btn" style="width:auto;padding:12px 28px" onclick="showDonationForm()">I've Already Donated</button>
+<button class="submit-btn" style="width:auto;padding:12px 28px;background:#EB1927" onclick="showDonationForm()">I Plan to Donate</button>
+</div>
+</div>
+
+<form class="contact-form" id="donationForm" action="https://formspree.io/f/xqepaqpo" method="POST" style="background:#f8f9fa;display:none">
 <h4 style="text-align:center;color:#053656;margin-bottom:1.5rem;font-size:1.3rem">Donation Information</h4>
-<p style="text-align:center;margin-bottom:1.5rem;color:#666;font-size:.95rem">Please provide your information for FEC compliance and to receive a receipt.</p>
+<p style="text-align:center;margin-bottom:1.5rem;color:#666;font-size:.95rem">Please provide your information for compliance and to receive a receipt.</p>
 <input type="hidden" name="form_type" value="Donation">
 <div class="form-group"><label for="donor_name">Full Name *</label><input type="text" id="donor_name" name="donor_name" required></div>
 <div class="form-group"><label for="donor_email">Email *</label><input type="email" id="donor_email" name="donor_email" required></div>
@@ -1479,8 +1504,12 @@
 </div>
 <div class="form-group"><label for="donation_amount">Donation Amount *</label><input type="number" id="donation_amount" name="donation_amount" min="1" step="0.01" required placeholder="$"></div>
 <div class="form-group"><label for="donation_date">Date of Donation *</label><input type="date" id="donation_date" name="donation_date" required></div>
-<div class="form-group"><label for="occupation">Occupation *</label><input type="text" id="occupation" name="occupation" required><small style="display:block;margin-top:.25rem;color:#666">Required for FEC compliance</small></div>
-<div class="form-group"><label for="employer">Employer *</label><input type="text" id="employer" name="employer" required><small style="display:block;margin-top:.25rem;color:#666">Required for FEC compliance</small></div>
+<!-- Occupation & Employer: shown only for $200+ donations (FEC requirement) -->
+<div id="fecFields" style="display:none">
+<p style="font-size:.9rem;color:#EB1927;font-weight:600;margin-bottom:1rem">⚠ Donations of $200 or more require occupation and employer information per FEC rules.</p>
+<div class="form-group"><label for="occupation">Occupation *</label><input type="text" id="occupation" name="occupation"><small style="display:block;margin-top:.25rem;color:#666">Required for FEC compliance for donations $200+</small></div>
+<div class="form-group"><label for="employer">Employer *</label><input type="text" id="employer" name="employer"><small style="display:block;margin-top:.25rem;color:#666">Required for FEC compliance for donations $200+</small></div>
+</div>
 <button type="submit" class="submit-btn">Submit Donation Information</button>
 <div class="form-message" id="donationFormMessage"></div>
 <p style="margin-top:1.5rem;font-size:.85rem;color:#666;text-align:center;line-height:1.6"><strong>Contribution Rules:</strong> I am a U.S. citizen or lawfully admitted permanent resident. This contribution is made from my own funds and not from funds provided by another person. Contributions are not tax deductible.</p>
@@ -1544,6 +1573,7 @@
                     <li><a href="#platform">Platform</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#events">Events</a></li>
+                    <li><a href="#donate">Donate</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -1589,6 +1619,34 @@
             }, 500);
         };
 
+        // ── Show Donation Form Toggle ──
+        window.showDonationForm = function() {
+            document.getElementById('donationForm').style.display = 'block';
+            document.getElementById('donateToggleArea').style.display = 'none';
+            document.getElementById('donationForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+
+        // ── Show/hide occupation & employer based on $200 threshold ──
+        var donationAmountInput = document.getElementById('donation_amount');
+        var fecFields = document.getElementById('fecFields');
+        var occupationInput = document.getElementById('occupation');
+        var employerInput = document.getElementById('employer');
+
+        donationAmountInput.addEventListener('input', function() {
+            var amount = parseFloat(this.value) || 0;
+            if (amount >= 200) {
+                fecFields.style.display = 'block';
+                occupationInput.required = true;
+                employerInput.required = true;
+            } else {
+                fecFields.style.display = 'none';
+                occupationInput.required = false;
+                employerInput.required = false;
+                occupationInput.value = '';
+                employerInput.value = '';
+            }
+        });
+
         // ── Hamburger Menu ──
         var hamburger = document.getElementById('hamburger');
         var navMenu = document.getElementById('navMenu');
@@ -1622,15 +1680,14 @@
 
         // ── Sticky CTA visibility (mobile) ──
         var stickyCta = document.getElementById('stickyCta');
+        var stickyDonate = document.getElementById('stickyDonate');
         var ctaStrip = document.querySelector('.cta-strip');
 
         window.addEventListener('scroll', function() {
             if (window.innerWidth <= 768 && ctaStrip) {
-                if (ctaStrip.getBoundingClientRect().bottom < 0) {
-                    stickyCta.classList.add('visible');
-                } else {
-                    stickyCta.classList.remove('visible');
-                }
+                var visible = ctaStrip.getBoundingClientRect().bottom < 0;
+                stickyCta.classList.toggle('visible', visible);
+                stickyDonate.classList.toggle('visible', visible);
             }
         });
 
