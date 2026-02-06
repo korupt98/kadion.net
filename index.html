@@ -1952,7 +1952,7 @@
         var GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxqldtmBLUHaViwf94AqzAFPIFubFUCOScJssJijMLR36Lr7ijpOzQLEn4SbOz_13psOw/exec';
 
         function sendToGoogleSheet(formData, formType) {
-            if (GOOGLE_SHEET_URL === 'https://script.google.com/macros/s/AKfycbxqldtmBLUHaViwf94AqzAFPIFubFUCOScJssJijMLR36Lr7ijpOzQLEn4SbOz_13psOw/exec') return; // skip if not configured
+            if (GOOGLE_SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return; // skip if not configured
             var data = {};
             formData.forEach(function(value, key) { data[key] = value; });
             data.form_type = formType;
