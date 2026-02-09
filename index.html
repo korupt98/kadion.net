@@ -526,6 +526,79 @@
               }
             }
 
+
+          /* Donation Grid Layout */
+          .donation-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+          }
+          
+          @media (min-width: 768px) {
+            .donation-grid {
+              grid-template-columns: 1fr 1fr;
+            }
+          }
+          
+          .donation-card {
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+          }
+          
+          .donation-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+          }
+          
+          .donation-card p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+          }
+          
+          .donation-card a {
+            display: inline-block;
+            background: white;
+            padding: 12px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all .3s;
+          }
+          
+          /* Venmo Styling */
+          .venmo-card {
+            background: #008CFF;
+          }
+          
+          .venmo-card a {
+            color: #008CFF;
+          }
+          
+          /* PayPal Styling */
+          .paypal-card {
+            background: #003087;
+          }
+          
+          .paypal-card a {
+            color: #003087;
+          }
+          
+          .donation-card a:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+          }
+
+
+
+      
+
+
+
+      
         /* Contact Form Theme Colors */
         .contact-form {
           background: #f1f5f9;
@@ -1399,6 +1472,39 @@
          decoding="async">
   </div>
 
+  <div class="slide">
+    <img class="zoomable" 
+         src="hometownhero.jpg" 
+         srcset="hometownhero.jpg 900w"
+         sizes="(max-width: 768px) 100vw, 900px"
+         alt="Sturbridge Home Town Hero at WooSox" 
+         loading="lazy"
+         decoding="async">
+  </div>
+
+  
+  <div class="slide">
+    <img class="zoomable" 
+         src="sllaward.jpg" 
+         srcset="sllaward.jpg 900w"
+         sizes="(max-width: 768px) 100vw, 900px"
+         alt="Sturbridge Little League Presidents Award" 
+         loading="lazy"
+         decoding="async">
+  </div>
+
+    
+  <div class="slide">
+    <img class="zoomable" 
+         src="schoolcommittee.jpg" 
+         srcset="schoolcommittee.jpg 900w"
+         sizes="(max-width: 768px) 100vw, 900px"
+         alt="Kadion presenting to Oxford School Committee" 
+         loading="lazy"
+         decoding="async">
+  </div>
+
+         
   <button class="slider-btn prev" aria-label="View previous image" aria-controls="fadeSlider">‹</button>
   <button class="slider-btn next" aria-label="View next image" aria-controls="fadeSlider">›</button>
   <div class="slider-dots" role="tablist" aria-label="Image navigation"></div>
@@ -1640,12 +1746,46 @@
 <section id="donate">
 <h3>Support the Campaign</h3>
 <p class="contact-desc">Your contribution helps us reach more voters and strengthen our community. Every donation, no matter the size, makes a difference.</p>
+
 <div style="max-width:700px;margin:0 auto">
+
+<!--  
 <div style="background:#008CFF;color:white;padding:2rem;border-radius:8px;text-align:center;margin-bottom:2rem">
 <h4 style="color:white;margin-bottom:1rem;font-size:1.5rem">Donate via Venmo</h4>
 <p style="margin-bottom:1.5rem;font-size:1.1rem">@electkadion</p>
 <a href="https://venmo.com/electkadion" target="_blank" rel="noopener" style="display:inline-block;background:white;color:#008CFF;padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:700;font-size:1.1rem;transition:all .3s">Open Venmo App</a>
 </div>
+-->
+
+<div style="max-width:900px;margin:0 auto">
+
+  <!-- Payment Options Grid -->
+  <div class="donation-grid">
+
+    <!-- Venmo -->
+    <div class="donation-card venmo-card">
+      <h4>Donate via Venmo</h4>
+      <p>@electkadion</p>
+      <a href="https://venmo.com/electkadion" target="_blank" rel="noopener">
+        Open Venmo App
+      </a>
+    </div>
+
+    <!-- PayPal -->
+    <div class="donation-card paypal-card">
+      <h4>Donate via PayPal</h4>
+      <p>kadion@kadion.org</p>
+      <a href="https://www.paypal.com/donate/?business=kadion@kadion.org&currency_code=USD"
+         target="_blank"
+         rel="noopener">
+         Donate with PayPal
+      </a>
+    </div>
+
+  </div>
+
+
+  
 
 <!-- Toggle buttons to reveal the form -->
 <div id="donateToggleArea" style="text-align:center;margin-bottom:2rem">
