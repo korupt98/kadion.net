@@ -6,12 +6,13 @@
 <!-- Preconnect hints for faster external requests -->
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 <link rel="preconnect" href="https://formspree.io" crossorigin>
+<link rel="preload" as="image" href="images/banner.webp" type="image/webp">
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="shortcut icon" href="images/favicon.ico">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKTEKS2TD"></script>
@@ -30,8 +31,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.kadion.org">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="og:image" content="https://www.kadion.org/banner.jpg">
-    <meta name="twitter:image" content="https://www.kadion.org/banner.jpg">
+    <meta property="og:image" content="https://www.kadion.org/images/banner.jpg">
+    <meta name="twitter:image" content="https://www.kadion.org/images/banner.jpg">
   
 
     <title>Kadion Phillips - Sturbridge Select Board</title>
@@ -1454,75 +1455,96 @@
        <div class="slider-container" id="fadeSlider">
 
   <div class="slide active">
-    <img class="zoomable" 
-         src="banner.jpg" 
-         srcset="banner.jpg 900w"
-         sizes="(max-width: 768px) 100vw, 900px"
-         alt="Kadion Phillips campaign banner with family" 
-         loading="eager"
-         decoding="async">
+    <picture>
+      <source srcset="images/banner.webp 900w" sizes="(max-width: 768px) 100vw, 900px" type="image/webp">
+      <img class="zoomable"
+           src="images/banner.jpg"
+           srcset="images/banner.jpg 900w"
+           sizes="(max-width: 768px) 100vw, 900px"
+           alt="Kadion Phillips campaign banner with family"
+           loading="eager"
+           decoding="async">
+    </picture>
   </div>
 
   <div class="slide">
-    <img class="zoomable" 
-         src="family.jpg" 
-         srcset="family.jpg 900w"
-         sizes="(max-width: 768px) 100vw, 900px"
-         alt="Kadion Phillips with his family" 
-         loading="lazy"
-         decoding="async">
+    <picture>
+      <source srcset="images/family.webp 900w" sizes="(max-width: 768px) 100vw, 900px" type="image/webp">
+      <img class="zoomable"
+           src="images/family.jpg"
+           srcset="images/family.jpg 900w"
+           sizes="(max-width: 768px) 100vw, 900px"
+           alt="Kadion Phillips with his family"
+           loading="lazy"
+           decoding="async">
+    </picture>
   </div>
 
   <div class="slide">
-    <img class="zoomable" 
-         src="SoccerBoys.jpg" 
-         srcset="SoccerBoys.jpg 900w"
-         sizes="(max-width: 768px) 100vw, 900px"
-         alt="Kadion coaching youth soccer team" 
-         loading="lazy"
-         decoding="async">
+    <picture>
+      <source srcset="images/SoccerBoys.webp 900w" sizes="(max-width: 768px) 100vw, 900px" type="image/webp">
+      <img class="zoomable"
+           src="images/SoccerBoys.jpg"
+           srcset="images/SoccerBoys.jpg 900w"
+           sizes="(max-width: 768px) 100vw, 900px"
+           alt="Kadion coaching youth soccer team"
+           loading="lazy"
+           decoding="async">
+    </picture>
   </div>
 
   <div class="slide">
-    <img class="zoomable" 
-         src="baseballtyler.jpg" 
-         srcset="baseballtyler.jpg 900w"
-         sizes="(max-width: 768px) 100vw, 900px"
-         alt="Youth baseball game in Sturbridge" 
-         loading="lazy"
-         decoding="async">
+    <picture>
+      <source srcset="images/baseballtyler.webp 900w" sizes="(max-width: 768px) 100vw, 900px" type="image/webp">
+      <img class="zoomable"
+           src="images/baseballtyler.jpg"
+           srcset="images/baseballtyler.jpg 900w"
+           sizes="(max-width: 768px) 100vw, 900px"
+           alt="Youth baseball game in Sturbridge"
+           loading="lazy"
+           decoding="async">
+    </picture>
   </div>
 
   <div class="slide">
-    <img class="zoomable" 
-         src="hometownhero.jpg" 
-         srcset="hometownhero.jpg 900w"
-         sizes="(max-width: 768px) 100vw, 900px"
-         alt="Sturbridge Home Town Hero at WooSox" 
-         loading="lazy"
-         decoding="async">
+    <picture>
+      <source srcset="images/hometownhero.webp 900w" sizes="(max-width: 768px) 100vw, 900px" type="image/webp">
+      <img class="zoomable"
+           src="images/hometownhero.jpg"
+           srcset="images/hometownhero.jpg 900w"
+           sizes="(max-width: 768px) 100vw, 900px"
+           alt="Sturbridge Home Town Hero at WooSox"
+           loading="lazy"
+           decoding="async">
+    </picture>
   </div>
 
   
   <div class="slide">
-    <img class="zoomable" 
-         src="sllaward.jpg" 
-         srcset="sllaward.jpg 900w"
-         sizes="(max-width: 768px) 100vw, 900px"
-         alt="Sturbridge Little League Presidents Award" 
-         loading="lazy"
-         decoding="async">
+    <picture>
+      <source srcset="images/sllaward.webp 900w" sizes="(max-width: 768px) 100vw, 900px" type="image/webp">
+      <img class="zoomable"
+           src="images/sllaward.jpg"
+           srcset="images/sllaward.jpg 900w"
+           sizes="(max-width: 768px) 100vw, 900px"
+           alt="Sturbridge Little League Presidents Award"
+           loading="lazy"
+           decoding="async">
+    </picture>
   </div>
 
     
   <div class="slide">
-    <img class="zoomable" 
-         src="schoolcommittee.jpg" 
-         srcset="schoolcommittee.jpg 900w"
-         sizes="(max-width: 768px) 100vw, 900px"
-         alt="Kadion presenting to Oxford School Committee" 
-         loading="lazy"
-         decoding="async">
+    <picture>
+      <source srcset="images/schoolcommittee.webp 900w" sizes="(max-width: 768px) 100vw, 900px" type="image/webp">
+      <img class="zoomable"
+           src="images/schoolcommittee.jpg"
+           srcset="images/schoolcommittee.jpg 900w"
+           sizes="(max-width: 768px) 100vw, 900px"
+           alt="Kadion presenting to Oxford School Committee"
+           loading="lazy"
+           decoding="async">
+    </picture>
   </div>
 
          
@@ -1552,12 +1574,15 @@
         <h2>About Kadion</h2>
         <div class="about-content">
             <figure class="about-image">
-                <img src="headshot.jpg?w=200&h=253&fit=crop" 
-                     srcset="headshot.jpg?w=200&h=253&fit=crop 200w, headshot.jpg?w=400&h=506&fit=crop 400w"
-                     sizes="(max-width: 768px) 30vw, 200px"
-                     alt="Professional headshot of Kadion Phillips"
-                     loading="lazy"
-                     decoding="async">
+                <picture>
+                  <source srcset="images/headshot.webp" sizes="(max-width: 768px) 30vw, 200px" type="image/webp">
+                  <img src="images/headshot.jpg"
+                       srcset="images/headshot.jpg 200w, images/headshot.jpg 400w"
+                       sizes="(max-width: 768px) 30vw, 200px"
+                       alt="Professional headshot of Kadion Phillips"
+                       loading="lazy"
+                       decoding="async">
+                </picture>
           </figure>
             <div class="about-text">
     
