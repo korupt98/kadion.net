@@ -34,7 +34,8 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="og:image" content="https://www.kadion.org/images/banner.jpg">
     <meta name="twitter:image" content="https://www.kadion.org/images/banner.jpg">
-  
+    <meta name="theme-color" content="#053656">
+    <link rel="canonical" href="https://www.kadion.org">
 
     <title>Kadion Phillips - Sturbridge Select Board</title>
     <style>
@@ -472,9 +473,13 @@
               opacity: 1;
             }
             
+            .slide picture {
+              display: contents;
+            }
+
             .slide img {
-              max-width: 100%;
-              max-height: 100%;
+              width: 100%;
+              height: 100%;
               object-fit: contain;
               touch-action: none;
             }
@@ -1696,9 +1701,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <span>Location TBD)</span>
+                        <span>Location TBD</span>
                     </div>
-                    <p class="event-description">Come out for a relaxed evening to meet Kadion, ask questions, or find our how you can help the campaign.</p>
+                    <p class="event-description">Come out for a relaxed evening to meet Kadion, ask questions, or find out how you can help the campaign.</p>
                     <a href="#contact" class="event-rsvp" onclick="showContactForm(); setSubject('RSVP: Meet and Greet with Kadion')">RSVP →</a>
                 </div>
 
@@ -2487,6 +2492,60 @@ If you would like to donate more than $50, please <a href="#contact" onclick="sh
 
         updateSlider();
         startAutoplay();
+
+        // ── GA4 Event Tracking ──
+        function track(eventName, params) {
+            if (typeof gtag === 'function') gtag('event', eventName, params || {});
+        }
+
+        // CTA strip buttons
+        var ctaMap = {
+            'Volunteer': 'volunteer_click',
+            'Request a Lawn Sign': 'lawn_sign_click',
+            'Donate': 'donate_click',
+            'Ask a Question': 'question_click'
+        };
+        document.querySelectorAll('.cta-strip a').forEach(function(a) {
+            a.addEventListener('click', function() {
+                var label = this.textContent.trim();
+                track(ctaMap[label] || 'cta_click', { label: label });
+            });
+        });
+
+        // Hero CTA
+        var heroCta = document.querySelector('.hero-cta');
+        if (heroCta) heroCta.addEventListener('click', function() { track('hero_cta_click'); });
+
+        // Share buttons
+        document.querySelectorAll('.share-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var method = (this.getAttribute('aria-label') || '').replace('Share campaign on ', '').replace('Share campaign via ', '').toLowerCase();
+                track('share', { method: method || this.id });
+            });
+        });
+
+        // Calendar options
+        ['googleCal','appleCal','outlookCal','yahooCal','icsDownload'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.addEventListener('click', function() {
+                track('calendar_add', { method: id.replace('Cal','').replace('Download','_download') });
+            });
+        });
+
+        // Donate buttons
+        document.querySelectorAll('[onclick*="showDonationForm"]').forEach(function(btn) {
+            btn.addEventListener('click', function() { track('donate_intent', { label: this.textContent.trim() }); });
+        });
+
+        // Form submissions
+        var contactForm = document.getElementById('contactForm');
+        if (contactForm) contactForm.addEventListener('submit', function() { track('form_submit', { form_type: 'contact' }); });
+
+        var donationForm = document.getElementById('donationForm');
+        if (donationForm) donationForm.addEventListener('submit', function() { track('form_submit', { form_type: 'donation' }); });
+
+        var emailSignupForm = document.getElementById('emailSignupForm');
+        if (emailSignupForm) emailSignupForm.addEventListener('submit', function() { track('form_submit', { form_type: 'email_signup' }); });
 
         // ── Active Nav Highlighting on Scroll ──
         var sections = document.querySelectorAll('section');
