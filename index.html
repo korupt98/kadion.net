@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
   <!-- FAST VERSION - Uses system fonts only for instant loading -->
 
 <!-- Preconnect hints for faster external requests -->
@@ -24,7 +25,6 @@
 
   gtag('config', 'G-XLKTEKS2TD');
 </script>
-      <meta charset="UTF-8">
     <meta name="description" content="Kadion Phillips for Sturbridge Select Board — April 13, 2026. Experienced Sturbridge community leader focused on transparency, responsible budgeting, fiscal responsibility, and keeping Sturbridge a great place to live.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Kadion Phillips - Sturbridge Select Board">
@@ -1847,6 +1847,7 @@
 <form class="contact-form" id="donationForm" action="https://formspree.io/f/xqepaqpo" method="POST" style="background:#f8f9fa;display:none">
 <h3 style="text-align:center;color:#053656;margin-bottom:1.5rem;font-size:1.3rem">Donation Information</h3>
 <p style="text-align:center;margin-bottom:1.5rem;color:#666;font-size:.95rem">Please provide your information for compliance and to receive a receipt.</p>
+<input type="hidden" name="_subject" value="New Donation Submission - kadion.org">
 <input type="hidden" name="form_type" value="Donation">
 <div class="form-group"><label for="donor_name">Full Name *</label><input type="text" id="donor_name" name="donor_name" required></div>
 <div class="form-group"><label for="donor_email">Email *</label><input type="email" id="donor_email" name="donor_email" required></div>
@@ -1894,11 +1895,13 @@ If you would like to donate more than $50, please <a href="#contact" onclick="sh
     <div style="text-align: center; margin-bottom: 1.5rem;">
         <p class="contact-desc">Have a question, want to volunteer, or request a lawn sign?</p>
         <button class="contact-toggle-btn" id="contactToggleBtn" onclick="showContactForm()">Get In Touch →</button>
+        <p style="margin-top: 1rem; color: #444; font-size: 0.95rem;">Or email directly: <a href="mailto:kadion@gmail.com" style="color: #053656; font-weight: 600;">kadion@gmail.com</a></p>
     </div>
 
     <!-- Full contact form - hidden by default -->
     <div id="contactFormWrapper" style="display: none;">
         <form class="contact-form" id="contactForm" action="https://formspree.io/f/xqepaqpo" method="POST">
+            <input type="hidden" name="_subject" value="New Contact Form Submission - kadion.org">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required aria-required="true">
